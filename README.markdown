@@ -1,27 +1,18 @@
 Dotfiles
 ========
-This repository includes all of my custom dotfiles.  They should be cloned to
-your home directory so that the path is `~/dotfiles/`.  The included setup
-script creates symlinks from your home directory to the files which are located
-in `~/dotfiles/`.
+This is a repository containing my custom dotfiles and device-independent commands that I include in them. These commands are saved in a separate dotfile, then symlinked to ~ and sourced by the original dotfile by appending the following line:
 
-The setup script is smart enough to back up your existing dotfiles into a
-`~/dotfiles_old/` directory if you already have any dotfiles of the same name as
-the dotfile symlinks being created in your home directory.
+```
+source ~/.my_custom_dotfile
+```
 
-So, to recap, the install script will:
-
-1. Back up any existing dotfiles in your home directory to `~/dotfiles_old/`
-2. Create symlinks to the dotfiles in `~/dotfiles/` in your home directory
-3. Clone the `oh-my-zsh` repository from my GitHub (for use with `zsh`)
-4. Check to see if `zsh` is installed, if it isn't, try to install it.
-5. If zsh is installed, run a `chsh -s` to set it as the default shell.
+Right now, I am primarily interested in my .bashrc file and .bash_profile, so the script will only work with those two. In future updates, others may be added. 
 
 Installation
 ------------
 
+You can install this by running the following commands
+
 ``` bash
 git clone git://github.com/stevekm/dotfiles ~/dotfiles
-cd ~/dotfiles
-./makesymlinks.sh
 ```
