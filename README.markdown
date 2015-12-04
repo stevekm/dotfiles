@@ -36,3 +36,5 @@ On machines that do not come with a .bashrc but have a .bash_profile, also run t
 ```bash
 echo "source ~/.bashrc" >> ~/.bash_profile
 ```
+
+Will probably have to exit the shell and restart for changes to take effect completely.
