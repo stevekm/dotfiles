@@ -38,7 +38,7 @@ alias gp='git pull && git push origin master'
 export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[92m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 
 # for local machines I use this
-# export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\033[4m\]\h\[\033[0m\]:\[\033[33;1m\]\w\[\033[m\]$ "
+# export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[31m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 export CLICOLOR=1
 # export LSCOLORS=ExFxBxDxCxegedabagacad # could also try this one
 
