@@ -14,5 +14,5 @@ Installation
 You can install this by running the following commands
 
 ``` bash
-git clone git://github.com/stevekm/dotfiles ~/dotfiles
+git clone https://github.com/stevekm/dotfiles.git ~/dotfiles
 ```
