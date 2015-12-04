@@ -27,3 +27,10 @@ Or this
 git remote set-url origin https://stevekm@github.com/stevekm/dotfiles.git
 ```
 Of course these only work for me, insert your username instead and maybe they will work for you too. 
+
+Then run this
+```bash
+cd ~
+ln -s ~/dotfiles/bashrc_steve_extras ~/.bashrc_steve_extras
+echo "source ~/.bashrc_steve_extras" >> ~/.bashrc
+```
