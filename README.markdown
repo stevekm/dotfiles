@@ -16,3 +16,14 @@ You can install this by running the following commands
 ``` bash
 git clone https://github.com/stevekm/dotfiles.git ~/dotfiles
 ```
+
+On some systems I need to use this instead
+
+```bash
+git clone https://stevekm@github.com/stevekm/dotfiles.git
+```
+Or this 
+```bash
+git remote set-url origin https://stevekm@github.com/stevekm/dotfiles.git
+```
+Of course these only work for me, insert your username instead and maybe they will work for you too. 
