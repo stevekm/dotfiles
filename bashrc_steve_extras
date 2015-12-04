@@ -17,7 +17,7 @@ fi
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
-alias l='ls -Glah'
+alias l='ls -Gah'
 alias lt='ls -Glahtr'
 alias ll='ls -l'
 
