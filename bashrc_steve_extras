@@ -19,7 +19,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias l='ls -Gah'
 alias lt='ls -Glahtr'
-alias ll='ls -l'
+alias ll='ls -lGah'
 
 ##############################################################################
 # I added this line to try and make my bitbucket repos clone properly, they keep trying to call GTK GUI stuff
