@@ -17,7 +17,7 @@ On some systems I need to use this instead
 ```bash
 git clone https://stevekm@github.com/stevekm/dotfiles.git
 ```
-Or this 
+Or this if I tried the first one and it didn't work
 ```bash
 git remote set-url origin https://stevekm@github.com/stevekm/dotfiles.git
 ```
