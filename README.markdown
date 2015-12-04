@@ -38,3 +38,13 @@ echo "source ~/.bashrc" >> ~/.bash_profile
 ```
 
 Will probably have to exit the shell and restart for changes to take effect completely.
+
+-------
+
+If setting this on a local machine (not a server) then also run this to switch to the correct color scheme
+
+```bash
+sed -i '/92m/ s/92m/31m/' ~/dotfiles/bashrc_steve_extras
+```
+
+Keep in mind this change will get overwritten with any git pull's on this repo
