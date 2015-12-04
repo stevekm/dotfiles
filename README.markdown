@@ -34,3 +34,8 @@ cd ~
 ln -s ~/dotfiles/bashrc_steve_extras ~/.bashrc_steve_extras
 echo "source ~/.bashrc_steve_extras" >> ~/.bashrc
 ```
+
+On machines that do not come with a .bashrc but have a .bash_profile, also run this
+```bash
+echo "source ~/.bashrc" >> ~/.bash_profile
+```
