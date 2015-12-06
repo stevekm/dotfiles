@@ -22,6 +22,7 @@ alias lt='ls -Glahtr'
 alias ll='ls -lGah'
 alias gp='git pull'
 alias gpp='git pull && git push origin master'
+alias gst='git status'
 
 ##############################################################################
 # I added this line to try and make my bitbucket repos clone properly, they keep trying to call GTK GUI stuff
