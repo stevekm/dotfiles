@@ -6,7 +6,7 @@
 # for storing quick notes about what you are doing at the time
 # log file here: $HOME/.now.tsv
 
-# (ADVANCED USAGE) this script will automatically detect if your pwd is in your 'projects' dir
+# (ADVANCED USAGE) this script will automatically detect if your pwd is in your 'projects' dir (i.e. you are working on a project)
 # and add the note to a separate log file for the project you are working in 
 # log file is in .tsv format, with timestamped and pwd-stamped entries
 # logfile here: $ProjDir_logPath/.now.projectlog.tsv
