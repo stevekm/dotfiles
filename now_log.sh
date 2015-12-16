@@ -14,7 +14,7 @@
 # log files are in .tsv format, with timestamped and pwd-stamped entries
 
 # # FUTURE DEVELOPMENTS FOR THIS SCRIPT
-# # issue: don't use ' in your entered message.. it messes things up
+# # issue: don't use ' in your entered message.. it messes things up; fix this
 # # allow for user-set list of project dirs
 now() {
   #
