@@ -1,6 +1,9 @@
 #!/bin/bash
 # source this from your bashrc!
 
+# # FUTURE DEVELOPMENTS FOR THIS SCRIPT
+# # issue: don't use ' in your entered message.. it messes things up
+# # allow for user-set list of project dirs
 now() {
   #
   # #
