@@ -9,9 +9,9 @@
 # (ADVANCED USAGE) this script will automatically detect if your pwd is 
 # in your 'projects' dir (i.e. you are working on a project)
 # and also add the note to a separate log file for the project you are working in 
-# log file is in .tsv format, with timestamped and pwd-stamped entries
 # logfile here: $ProjDir_logPath/.now.projectlog.tsv
 
+# log files are in .tsv format, with timestamped and pwd-stamped entries
 
 # # FUTURE DEVELOPMENTS FOR THIS SCRIPT
 # # issue: don't use ' in your entered message.. it messes things up
