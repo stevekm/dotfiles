@@ -60,7 +60,8 @@ now() {
     fi
   
     # write the project log entry
-    echo -e "$MyDate\t$Args\t$PWD\t$LogFile" >> $LogFile
+#    echo -e "$MyDate\t$Args\t$PWD\t$LogFile" >> $LogFile
+    echo -e "$MyDate\t$Args\t$PWD" >> $LogFile
 
   fi
     }
