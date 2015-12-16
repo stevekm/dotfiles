@@ -132,6 +132,8 @@ bu () {
 # Task Logging Function 
 ##############################################################################
 # https://news.ycombinator.com/item?id=7409926
-now() {
-      echo $(date "+%Y-%m-%d %H:%M:%S") - "$@" >> $HOME/.now
-    }
+#now() {
+#      echo $(date "+%Y-%m-%d %H:%M:%S") - "$@" >> $HOME/.now
+#    }
+
+source ~/dotfiles/now_log.sh
