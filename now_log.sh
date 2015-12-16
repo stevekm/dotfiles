@@ -1,5 +1,16 @@
 #!/bin/bash
-# source this from your bashrc!
+# USAGE: now <your message here>
+# source this from your bashrc! don't call the script directly
+
+# (BASIC USAGE) this script sets up a custom function that creates a log file in your Home directory
+# for storing quick notes about what you are doing at the time
+# log file here: $HOME/.now.tsv
+
+# (ADVANCED USAGE) this script will automatically detect if your pwd is in your 'projects' dir
+# and add the note to a separate log file for the project you are working in 
+# log file is in .tsv format, with timestamped and pwd-stamped entries
+# logfile here: $ProjDir_logPath/.now.projectlog.tsv
+
 
 # # FUTURE DEVELOPMENTS FOR THIS SCRIPT
 # # issue: don't use ' in your entered message.. it messes things up
