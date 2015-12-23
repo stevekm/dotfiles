@@ -17,6 +17,7 @@
 # # issue: don't use ' in your entered message.. it messes things up; fix this
 # # allow for user-set list of project dirs
 # # make script/function exit if the logdir path is invalid
+# # add current git log hash ID to project entries, if present
 now() {
   #
   # #
