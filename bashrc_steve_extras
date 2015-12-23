@@ -137,4 +137,4 @@ bu () {
 #      echo $(date "+%Y-%m-%d %H:%M:%S") - "$@" >> $HOME/.now
 #    }
 
-source ~/dotfiles/now_log.sh
+source ~/dotfiles/project_logger.sh
