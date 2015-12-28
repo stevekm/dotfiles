@@ -31,8 +31,8 @@ now() {
   Args="$@"
   
   # # write the entry to the now log file
-  echo -e "$MyDate\t$Args\t$PWD" >> $HOME/.now.tsv
-  echo -e "Logged in $HOME/.now.tsv"
+  echo -e "$MyDate\t$Args\t$PWD" >> $HOME/now.log/.now.tsv
+  echo -e "Logged in $HOME/now.log/.now.tsv"
 
   #
   # #
@@ -41,11 +41,11 @@ now() {
   # if the current working directory is a project directory
   
   # # get the username
-  USER_NAME=$(whoami)
+  # USER_NAME=$(whoami)  # depricated 
   
   # # set the project dir(s) to watch
   # # # future version; allow for a list of proj dirs here
-  My_Dir=/ifs/home/$USER_NAME/projects
+  My_Dir=$HOME/projects
 
 
   # check if My Dir is a part of pwd file path
