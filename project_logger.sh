@@ -15,6 +15,7 @@
 
 # # FUTURE DEVELOPMENTS FOR THIS SCRIPT
 # # issue: shell interpretted special characters break the script a bit; solution: Don't use ', ", ;, etc. ....
+# # # don't use anything listed on this page in your note: http://tldp.org/LDP/abs/html/special-chars.html
 # # allow for user-set list of project dirs
 # # make script/function exit if the logdir path is invalid - DONE
 now() {
