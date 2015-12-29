@@ -144,5 +144,6 @@ source ~/dotfiles/project_logger.sh
 # from here: https://wiki.archlinux.org/index.php/Color_Bash_Prompt
 ##############################################################################
 
-PROMPT_COMMAND="${PROMPT_COMMAND}; echo; echo -e '\e[0;35m'\[\$(date +%F\ %T)\]'\e[m'"
+#PROMPT_COMMAND="${PROMPT_COMMAND}; echo; echo -e '\e[0;35m'\[\$(date +%F\ %T)\]'\e[m'"
+PROMPT_COMMAND="${PROMPT_COMMAND}; echo; echo -e '\033[0;35m'\[\$(date +%F\ %T)\]'\033[m'"
 #echo -e ${PROMPT_COMMAND}
