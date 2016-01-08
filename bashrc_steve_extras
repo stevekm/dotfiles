@@ -137,7 +137,13 @@ bu () {
 #      echo $(date "+%Y-%m-%d %H:%M:%S") - "$@" >> $HOME/.now
 #    }
 
-source ~/dotfiles/project_logger.sh
+#source ~/dotfiles/project_logger.sh
+
+if [ -f ~/dotfiles/project_logger.sh ]; then
+	source ~/dotfiles/project_logger.sh
+elif [ -f /ifs/home/$(whoami)/dotfiles/project_logger.sh ]; then
+	source /ifs/home/$(whoami)/dotfiles/project_logger.sh
+fi
 
 ##############################################################################
 # Timestamp bash Prompt
