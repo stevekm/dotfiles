@@ -21,7 +21,7 @@ Or this if I tried the first one and it didn't work
 ```bash
 git remote set-url origin https://stevekm@github.com/stevekm/dotfiles.git
 ```
-Of course these only work for me, insert your username instead and maybe they will work for you too. 
+Of course the last two only work for me, insert your username instead and maybe they will work for you too. 
 
 ------------
 
