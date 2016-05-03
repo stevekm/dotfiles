@@ -52,8 +52,8 @@ export CLICOLOR=1
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 export PROMPT_COMMAND='history -a'
-export HISTFILESIZE=400000000
-export HISTSIZE=10000
+export HISTFILESIZE=1000000
+export HISTSIZE=1000000
 # I'm not a fan of this one but here it is
 # export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND}"
 
