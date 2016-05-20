@@ -57,6 +57,8 @@ export HISTSIZE=1000000
 # I'm not a fan of this one but here it is
 # export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND}"
 # http://www.linuxjournal.com/content/using-bash-history-more-efficiently-histcontrol
+# use this to remove duplicates that are already preset:
+# # cat .bash_history | awk '!x[$0]++' > .bash_history2
 
 # press up/down after typing a command on console to search history of just that command
 # this is stored in .inputrc file
