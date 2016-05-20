@@ -49,13 +49,14 @@ export CLICOLOR=1
 # Mange the bash history better..
 ##############################################################################
 
-export HISTCONTROL=ignoredups:erasedups
+export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 export PROMPT_COMMAND='history -a'
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 # I'm not a fan of this one but here it is
 # export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND}"
+# http://www.linuxjournal.com/content/using-bash-history-more-efficiently-histcontrol
 
 # press up/down after typing a command on console to search history of just that command
 # this is stored in .inputrc file
