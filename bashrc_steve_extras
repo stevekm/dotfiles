@@ -25,6 +25,8 @@ alias gp='git pull'
 alias gpp='git pull && git push origin master'
 alias gst='git status'
 
+gi () { echo $1 >> .gitignore; echo -e "$1 added to:\n$(readlink -f .gitignore)"; }
+
 ##############################################################################
 # I added this line to try and make my bitbucket repos clone properly, they keep trying to call GTK GUI stuff
 ##############################################################################
