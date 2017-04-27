@@ -142,7 +142,7 @@ bu () {
 #      echo $(date "+%Y-%m-%d %H:%M:%S") - "$@" >> $HOME/.now
 #    }
 
-#source ~/dotfiles/project_logger.sh
+source ~/dotfiles/project_logger.sh
 
 if [ -f ~/dotfiles/project_logger.sh ]; then
 	source ~/dotfiles/project_logger.sh
