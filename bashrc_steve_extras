@@ -169,3 +169,10 @@ catcsv () {
 #PROMPT_COMMAND="${PROMPT_COMMAND}; echo; echo -e '\e[0;35m'\[\$(date +%F\ %T)\]'\e[m'"
 PROMPT_COMMAND="${PROMPT_COMMAND}; echo; echo -e '\033[0;35m'\[\$(date +%F\ %T)\]'\033[m'"
 #echo -e ${PROMPT_COMMAND}
+
+##############################################################################
+# Enumerate TSV and CSV file header fields
+##############################################################################
+
+nheadt () {local input_file="$1"; head -1 "$input_file" | tr '\t' '\n' | cat -n}
+nheadc () {local input_file="$1"; head -1 "$input_file" | tr ',' '\n' | cat -n}
