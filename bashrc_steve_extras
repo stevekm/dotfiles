@@ -13,6 +13,7 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+
 # User specific aliases and functions
 alias rm='rm -i'
 alias mv='mv -i'
@@ -24,6 +25,7 @@ alias ll='ls -lah'
 alias gp='git pull'
 alias gpp='git pull && git push origin master'
 alias gst='git status'
+alias gau='git add -u'
 
 gi () { echo $1 >> .gitignore; echo -e "$1 added to:\n$(readlink -f .gitignore)"; }
 
@@ -31,8 +33,8 @@ gi () { echo $1 >> .gitignore; echo -e "$1 added to:\n$(readlink -f .gitignore)"
 # I added this line to try and make my bitbucket repos clone properly, they keep trying to call GTK GUI stuff
 ##############################################################################
 [ -n "$SSH_CONNECTION" ] && unset SSH_ASKPASS
-# I commented this out when I couldn't clone a git repo from NYULMC github
-# I re-un-commented this when I couldn't clone another gir repo..
+# I commented this out when I couldnt clone a git repo from NYULMC github
+# I re-un-commented this when I couldnt clone another git repo..
 
 ##############################################################################
 # Add colors to the console
@@ -150,16 +152,6 @@ elif [ -f /ifs/home/$(whoami)/dotfiles/project_logger.sh ]; then
 	source /ifs/home/$(whoami)/dotfiles/project_logger.sh
 fi
 
-##############################################################################
-# Print CSV files to terminal better
-# https://chrisjean.com/view-csv-data-from-the-command-line/
-# NOTE: column does not handle lines over 2k in length. This limit is patched in version 9.0.6 of bsdmainutils. Unfortunately, most systems currently run 9.0.5 of that library
-##############################################################################
-
-catcsv () {
-    local myfile="$1"
-    cat "$myfile" | sed -e 's/,,/, ,/g' | column -s, -t | less -#5 -N -S
-}
 
 ##############################################################################
 # Timestamp bash Prompt
@@ -171,9 +163,18 @@ PROMPT_COMMAND="${PROMPT_COMMAND}; echo; echo -e '\033[0;35m'\[\$(date +%F\ %T)\
 #echo -e ${PROMPT_COMMAND}
 
 ##############################################################################
-# Enumerate TSV and CSV file header fields
+# Extra Functions
 ##############################################################################
+# Print CSV files to terminal better
+# https://chrisjean.com/view-csv-data-from-the-command-line/
+# NOTE: column does not handle lines over 2k in length. This limit is patched in version 9.0.6 of bsdmainutils. Unfortunately, most systems currently run 9.0.5 of that library
+catcsv () {
+    local myfile="$1"
+    cat "$myfile" | sed -e 's/,,/, ,/g' | column -s, -t | less -#5 -N -S
+}
 
+
+# Enumerate TSV and CSV file header fields
 nheadt () { 
 	local input_file="$1"
 	head -1 "$input_file" | tr '\t' '\n' | cat -n 
@@ -183,3 +184,6 @@ nheadc () {
 	local input_file="$1"
 	head -1 "$input_file" | tr ',' '\n' | cat -n 
 }
+
+# touch a file and make it executable, useful for creating new scripts quickly with a single command
+touchx () { touch "$1"; chmod +x "$1"; }
