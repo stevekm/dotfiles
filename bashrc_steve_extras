@@ -29,6 +29,9 @@ alias gau='git add -u'
 
 gi () { echo $1 >> .gitignore; echo -e "$1 added to:\n$(readlink -f .gitignore)"; }
 
+# keep ssh from dying due to inactivity
+alias ssh='ssh -o ServerAliveInterval=60'
+
 ##############################################################################
 # I added this line to try and make my bitbucket repos clone properly, they keep trying to call GTK GUI stuff
 ##############################################################################
