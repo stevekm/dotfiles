@@ -5,6 +5,23 @@ set encoding=utf-8
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
 set list
 
+" https://computers.tutsplus.com/tutorials/basic-vim-configuration--cms-21498
+set number          "This turns on line numbering
+" set relativenumber  "This turns on relative numbering
+
+
+
+" https://dougblack.io/words/a-good-vimrc.html
+set tabstop=4       " number of visual spaces per TAB
+set softtabstop=4   " number of spaces in tab when editing
+set expandtab       " tabs are spaces
+set wildmenu            " visual autocomplete for command menu
+
+
+set backup		" keep a backup file
+
+
+
 " items copied from system .vimrc: 
 
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
