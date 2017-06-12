@@ -19,6 +19,55 @@ set wildmenu            " visual autocomplete for command menu
 
 
 set backup		" keep a backup file
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
+
+
+" Python stuff
+" https://wiki.python.org/moin/Vim
+syntax on
+filetype indent plugin on
+filetype indent on
+set shiftwidth=4
+
+" https://stackoverflow.com/a/7772282/5359531
+" http://www.vim.org/scripts/script.php?script_id=2666
+"Use Mark plugin to highlight selected word  
+" map <2-leftmouse> \m   
+" let g:mwAutoSaveMarks = 0 
+
+
+
+
+
+" https://stackoverflow.com/a/26088438/5359531
+" Highlight all instances of word under cursor, when idle.
+" Useful when studying strange source code.
+" Type z/ to toggle highlighting on/off.
+nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+function! AutoHighlightToggle()
+   let @/ = ''
+   if exists('#auto_highlight')
+     au! auto_highlight
+     augroup! auto_highlight
+     setl updatetime=4000
+     echo 'Highlight current word: off'
+     return 0
+  else
+    augroup auto_highlight
+    au!
+    au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+    augroup end
+    setl updatetime=500
+    echo 'Highlight current word: ON'
+  return 1
+ endif
+endfunction
+" call AutoHighlightToggle()
+
+
 
 
 
