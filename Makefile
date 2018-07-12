@@ -31,5 +31,30 @@ $(INPUTRC):
 	@cp inputrc "$(INPUTRC)"
 
 
+
+# set up git username and email
+NAME:=
+EMAIL:=
+# stevekm@users.noreply.github.com
+git: git-setup-username git-setup-email
+git-setup-username:
+	@if [ -z "$$(git config --get user.name)" ]; then \
+	if [ ! -z "$(NAME)" ]; then \
+	echo ">>> Git username not set, setting it to $(NAME)"; \
+	git config --global user.name "$(NAME)"; \
+	else echo ">>> Git username not set, no NAME provided (e.g. make NAME=yourname)"; exit 1 ; fi ; \
+	fi
+git-setup-email:
+	@if [ -z "$$(git config --get user.email)" ]; then \
+	if [ ! -z "$(EMAIL)" ]; then \
+	echo ">>> Git email not set, setting it to $(EMAIL)"; \
+	git config --global user.email "$(EMAIL)"; \
+	else echo ">>> Git username not set, no EMAIL provided (e.g. make EMAIL=yourname)"; exit 1 ; fi ; \
+	fi
+
+
+
+# git config --get user.email
+
 # clean:
 # 	cd ~ && rm -f .inputrc .bashrc .bashrc_extras
