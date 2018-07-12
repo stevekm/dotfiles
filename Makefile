@@ -19,7 +19,7 @@ $(BASHRC):
 # add an entry in user .bashrc to source the extras file
 add-extras-to-bashrc: $(BASHRC)
 	@if ! $$(grep -q '.bashrc_extras' $(BASHRC)); then \
-	echo ">>> Adding entry to .bashrc..." ; \
+	echo ">>> Adding 'extras' entry to .bashrc..." ; \
 	echo "source '$(EXTRASLINK)'" >> "$(BASHRC)" ; \
 	fi
 
@@ -52,9 +52,19 @@ git-setup-email:
 	else echo ">>> Git username not set, no EMAIL provided (e.g. make EMAIL=yourname)"; exit 1 ; fi ; \
 	fi
 
-
-
-# git config --get user.email
-
+# set up 'now' logger
+# https://github.com/stevekm/now-log.git
+# git@github.com:stevekm/now-log.git
+NOWDIR:=$(HOMEDIR)/now-log
+NOWSCRIPT:=$(NOWDIR)/now-logger.sh
+now: now-clone add-now-to-bashrc
+now-clone: $(NOWDIR)
+$(NOWDIR) $(NOWSCRIPT):
+	git clone https://github.com/stevekm/now-log.git "$(NOWDIR)"
+add-now-to-bashrc: $(NOWSCRIPT) $(BASHRC)
+	@if ! $$(grep -q 'now-logger.sh' $(BASHRC)); then \
+	echo ">>> Adding 'now' entry to .bashrc..." ; \
+	echo "source '$(NOWSCRIPT)'" >> "$(BASHRC)" ; \
+	fi
 # clean:
 # 	cd ~ && rm -f .inputrc .bashrc .bashrc_extras
