@@ -1,0 +1,97 @@
+##############################################################################
+#   Filename: bashrc_extras
+#        URL: https://github.com/stevekm/dotfiles
+##############################################################################
+
+##############################################################################
+# Console Colors
+##############################################################################
+# Remote servers
+export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[92m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+
+# Local machines
+# export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[31m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+
+# enable console text colors
+export CLICOLOR=1
+
+##############################################################################
+# Timestamp bash Prompt
+# from here: https://wiki.archlinux.org/index.php/Color_Bash_Prompt
+# ex:
+# [2017-06-02 13:46:36]
+# kellys04@mac01:~$
+##############################################################################
+
+command_prompt_date_string () {
+	printf '\033[0;35m[%s]\033[m\n' "$(date +%F\ %T)"
+}
+export PROMPT_COMMAND="echo; command_prompt_date_string"
+
+##############################################################################
+# Aliases & Functions
+##############################################################################
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias l='ls -Gah'
+alias lt='ls -Glahtr'
+alias ltt='ls -Glahtr | tail'
+alias ll='ls -lah'
+
+alias gp='git pull'
+alias gpp='git pull && git push origin master'
+alias gst='git status'
+alias gau='git add -u'
+
+# add an item to your .gitignore
+gi () { echo "$1" >> .gitignore; printf "%s added to .gitignore" "$1" ; }
+
+# keep ssh from dying due to inactivity
+alias ssh='ssh -o ServerAliveInterval=60'
+
+
+# Print CSV files to terminal better
+# https://chrisjean.com/view-csv-data-from-the-command-line/
+# NOTE: column does not handle lines over 2k in length. This limit is patched in version 9.0.6 of bsdmainutils. Unfortunately, most systems currently run 9.0.5 of that library
+catcsv () {
+    local myfile="$1"
+    cat "$myfile" | sed -e 's/,,/, ,/g' | column -s, -t | less -#5 -N -S
+}
+
+
+# Enumerate TSV and CSV file header fields, so you know which field to 'cut' on
+nheadt () {
+	local input_file="$1"
+	head -1 "$input_file" | tr '\t' '\n' | cat -n
+}
+
+nheadc () {
+	local input_file="$1"
+	head -1 "$input_file" | tr ',' '\n' | cat -n
+}
+
+# touch a file and make it executable, useful for creating new scripts quickly with a single command
+touchx () { touch "$1"; chmod +x "$1"; }
+
+
+
+##############################################################################
+# prevent git from trying to open GUI window for password entry
+##############################################################################
+[ -n "$SSH_CONNECTION" ] && unset SSH_ASKPASS
+# I commented this out when I couldnt clone a git repo from NYULMC github
+# I re-un-commented this when I couldnt clone another git repo..
+
+
+##############################################################################
+# Mange the bash history better
+##############################################################################
+export HISTCONTROL=ignoreboth:erasedups
+shopt -s histappend
+export PROMPT_COMMAND="${PROMPT_COMMAND}; history -a"
+export HISTFILESIZE=1000000
+export HISTSIZE=1000000
+
+
+
