@@ -74,7 +74,9 @@ nheadc () {
 # touch a file and make it executable, useful for creating new scripts quickly with a single command
 touchx () { touch "$1"; chmod +x "$1"; }
 
-
+# get node usage metrics on SLURM
+alias sload='sinfo -N -O nodelist,partition,statelong,cpusstate,memory,freemem'
+# https://slurm.schedmd.com/sinfo.html
 
 ##############################################################################
 # prevent git from trying to open GUI window for password entry
