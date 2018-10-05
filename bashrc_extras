@@ -43,6 +43,8 @@ alias gp='git pull'
 alias gpp='git pull && git push origin master'
 alias gst='git status'
 alias gau='git add -u'
+
+# list all items managed by the current git repo
 alias gtree='git ls-tree --full-tree -r HEAD'
 
 # add an item to your .gitignore
@@ -78,6 +80,9 @@ touchx () { touch "$1"; chmod +x "$1"; }
 # get node usage metrics on SLURM
 alias sload='sinfo -N -O nodelist,partition,statelong,cpusstate,memory,freemem'
 # https://slurm.schedmd.com/sinfo.html
+
+# check your current SLURM jobs
+alias sq='squeue -u $USER'
 
 ##############################################################################
 # prevent git from trying to open GUI window for password entry
