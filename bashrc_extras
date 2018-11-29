@@ -43,6 +43,7 @@ alias gp='git pull'
 alias gpp='git pull && git push origin master'
 alias gst='git status'
 alias gau='git add -u'
+alias gv='git remote -v'
 
 # list all items managed by the current git repo
 alias gtree='git ls-tree --full-tree -r HEAD'
@@ -77,6 +78,27 @@ nheadc () {
 # touch a file and make it executable, useful for creating new scripts quickly with a single command
 touchx () { touch "$1"; chmod +x "$1"; }
 
+
+# transpose a file; https://stackoverflow.com/a/1729980/5359531
+t () {
+	awk '
+{
+    for (i=1; i<=NF; i++)  {
+        a[NR,i] = $i
+    }
+}
+NF>p { p = NF }
+END {
+    for(j=1; j<=p; j++) {
+        str=a[1,j]
+        for(i=2; i<=NR; i++){
+            str=str" "a[i,j];
+        }
+        print str
+    }
+}' "${1}"
+}
+
 # get node usage metrics on SLURM
 alias sload='sinfo -N -O nodelist,partition,statelong,cpusstate,memory,freemem'
 # https://slurm.schedmd.com/sinfo.html
@@ -104,6 +126,3 @@ shopt -s histappend
 export PROMPT_COMMAND="${PROMPT_COMMAND}; history -a"
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
-
-
-
