@@ -99,6 +99,7 @@ END {
 }' "${1}"
 }
 
+# ~~~~~ SLURM ~~~~~ # 
 # get node usage metrics on SLURM
 alias sload='sinfo -N -O nodelist,partition,statelong,cpusstate,memory,freemem'
 # https://slurm.schedmd.com/sinfo.html
@@ -109,6 +110,9 @@ alias sq='squeue -u $USER -o "%.18i %.P %.T %.10M %.21S %.12l %.3C %.12R %.15j" 
 # check for screens on all Big Purple head nodes
 alias screens2='for s in bigpurple-ln1 bigpurple-ln2 bigpurple-ln3 bigpurple-ln4; do ssh "$s" <<<"screen -ls" ; done'
 alias screens='ls -1 /var/run/screen/S-$USER'
+
+# count the total number of CPU cores you have allocated across all jobs
+alias scpus='squeue -u $USER -o "%.T %.3C" | grep "RUNNING" | tr -s "[:space:]" | cut -d " " -f2 | paste -sd+ | bc'
 
 ##############################################################################
 # prevent git from trying to open GUI window for password entry
