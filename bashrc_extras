@@ -38,7 +38,6 @@ alias l='ls -Gah'
 alias lt='ls -Glahtr'
 alias ltt='ls -Glahtr | tail'
 alias ll='ls -lah'
-alias rf='readlink -f .'
 
 alias gp='git pull'
 alias gpp='git pull && git push origin master'
@@ -99,6 +98,11 @@ END {
     }
 }' "${1}"
 }
+
+rf () { 
+    readlink -f "${1:-$PWD}"
+}
+
 
 # ~~~~~ SLURM ~~~~~ # 
 # get node usage metrics on SLURM
