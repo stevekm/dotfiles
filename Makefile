@@ -6,7 +6,7 @@ all: link-extras add-extras-to-bashrc add-inputrc
 EXTRASPATH:=$(shell python -c 'import os; print(os.path.realpath("bashrc_extras"))')
 EXTRASLINK:=$(HOMEDIR)/.bashrc_extras
 link-extras: $(EXTRASLINK)
-$(EXTRASLINK): 
+$(EXTRASLINK):
 	@echo ">>> Creating link to 'bashrc_extras' in home dir..."
 	@ln -s "$(EXTRASPATH)" "$(EXTRASLINK)"
 
@@ -26,11 +26,24 @@ add-extras-to-bashrc: $(BASHRC)
 # press up/down after typing a command on console to search history of just that command
 INPUTRC:=$(HOMEDIR)/.inputrc
 add-inputrc: $(INPUTRC)
-$(INPUTRC): 
+$(INPUTRC):
 	@echo ">>> File $(INPUTRC) does not exist, adding it..."
 	@cp inputrc "$(INPUTRC)"
 
+# designate system as my local desktop
+LOCALFILE=.local
+local: $(LOCALFILE)
 
+$(LOCALFILE):
+	touch $(LOCALFILE)
+	if [ -f "$(REMOTEFILE)" ]; then rm -f "$(REMOTEFILE)"; fi
+
+# designate system as a remote server
+REMOTEFILE=.remote
+remote: $(REMOTEFILE)
+$(REMOTEFILE):
+	touch $(REMOTEFILE)
+	if [ -f "$(LOCALFILE)" ]; then rm -f "$(LOCALFILE)"; fi
 
 # set up git username and email
 NAME:=

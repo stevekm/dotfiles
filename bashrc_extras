@@ -6,11 +6,15 @@
 ##############################################################################
 # Console Colors
 ##############################################################################
-# Remote servers
-export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[92m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
-
-# Local machines
-# export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[31m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+if [ -f "$(dirname $BASH_SOURCE)/.remote" ]; then
+	# Remote servers
+	export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[92m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+elif [ -f "$(dirname $BASH_SOURCE)/.local" ]; then
+	# Local machines
+	export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[31m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+else
+	echo "couldn't figure out the correct PS1 to use, try running 'make remote' or 'make local' from the dotfiles dir"
+fi
 
 # enable console text colors
 export CLICOLOR=1
@@ -99,12 +103,12 @@ END {
 }' "${1}"
 }
 
-rf () { 
+rf () {
     readlink -f "${1:-$PWD}"
 }
 
 
-# ~~~~~ SLURM ~~~~~ # 
+# ~~~~~ SLURM ~~~~~ #
 # get node usage metrics on SLURM
 alias sload='sinfo -N -O nodelist,partition,statelong,cpusstate,memory,freemem'
 # https://slurm.schedmd.com/sinfo.html

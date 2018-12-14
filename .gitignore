@@ -5,3 +5,5 @@ chef/
 private
 foo
 foobar
+.local
+.remote
