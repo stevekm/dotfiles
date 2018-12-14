@@ -106,8 +106,10 @@ END {
 rf () {
     readlink -f "${1:-$PWD}"
 }
-
-
+# version for mac
+grf () {
+    greadlink -f "${1:-$PWD}"
+}
 # ~~~~~ SLURM ~~~~~ #
 # get node usage metrics on SLURM
 alias sload='sinfo -N -O nodelist,partition,statelong,cpusstate,memory,freemem'
