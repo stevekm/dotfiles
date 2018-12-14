@@ -103,13 +103,17 @@ END {
 }' "${1}"
 }
 
+if [ "$(uname)" == "Darwin" ]; then
+# version for mac
+rf () {
+    greadlink -f "${1:-$PWD}"
+}
+else
 rf () {
     readlink -f "${1:-$PWD}"
 }
-# version for mac
-grf () {
-    greadlink -f "${1:-$PWD}"
-}
+fi
+
 # ~~~~~ SLURM ~~~~~ #
 # get node usage metrics on SLURM
 alias sload='sinfo -N -O nodelist,partition,statelong,cpusstate,memory,freemem'
