@@ -110,7 +110,7 @@ alias sload='sinfo -N -O nodelist,partition,statelong,cpusstate,memory,freemem'
 # https://slurm.schedmd.com/sinfo.html
 
 # check your current SLURM jobs
-alias sq="squeue -u $USER -o '%10i %15P %10T %10M %10S %12l %3C %15R %25j' --long"
+alias sq="squeue -u $USER -o '%10i %15P %10T %10M %10S %12l %3C %15R %30j' --long"
 
 # check for screens on all Big Purple head nodes
 alias screens2='for s in bigpurple-ln1 bigpurple-ln2 bigpurple-ln3 bigpurple-ln4; do ssh "$s" <<<"screen -ls" ; done'
