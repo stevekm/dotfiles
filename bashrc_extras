@@ -114,6 +114,10 @@ rf () {
 }
 fi
 
+
+# kill all processes started by the current user
+alias megakill="ps u | tr -s [[:space:]] | cut -f2 -d' ' | xargs kill"
+
 # ~~~~~ SLURM ~~~~~ #
 # get node usage metrics on SLURM
 alias sload='sinfo -N -O nodelist,partition,statelong,cpusstate,memory,freemem'
