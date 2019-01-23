@@ -134,6 +134,12 @@ alias screens='ls -1 /var/run/screen/S-$USER'
 # count the total number of CPU cores you have allocated across all jobs
 alias scpus='squeue -u $USER -o "%.T %.3C" | grep "RUNNING" | tr -s "[:space:]" | cut -d " " -f2 | paste -sd+ | bc'
 
+# count all the submitted cpus 
+alias scpusa='squeue -u $USER -o "%C" | tail -n +2 | tr -s "[:space:]" | paste -sd+ | bc'
+
+# count the total number of CPU cores you have allocated across all pending jobs
+alias scpus='squeue -u $USER -o "%.T %.3C" | grep "PENDING" | tr -s "[:space:]" | cut -d " " -f2 | paste -sd+ | bc'
+
 ##############################################################################
 # prevent git from trying to open GUI window for password entry
 ##############################################################################
