@@ -104,14 +104,14 @@ END {
 }
 
 if [ "$(uname)" == "Darwin" ]; then
-# version for mac
-rf () {
-    greadlink -f "${1:-$PWD}"
-}
+    # version for mac; install with Homebrew..
+    rf () {
+        greadlink -f "${1:-$PWD}"
+    }
 else
-rf () {
-    readlink -f "${1:-$PWD}"
-}
+    rf () {
+        readlink -f "${1:-$PWD}"
+    }
 fi
 
 
@@ -125,20 +125,23 @@ alias sload='sinfo -N -O nodelist,partition,statelong,cpusstate,memory,freemem'
 
 # check your current SLURM jobs
 alias sq="squeue -u $USER -o '%10i %15P %10T %10M %10S %12l %3C %15R %45j' --long"
+# shorter version for lower res screen
 alias sq2="squeue -u $USER -o '%10i %15P %10T %10M %10S %12l %3C %15R %30j' --long"
 
 # check for screens on all Big Purple head nodes
 alias screens2='for s in bigpurple-ln1 bigpurple-ln2 bigpurple-ln3 bigpurple-ln4; do ssh "$s" <<<"screen -ls" ; done'
 alias screens='ls -1 /var/run/screen/S-$USER'
 
-# count the total number of CPU cores you have allocated across all jobs
-alias scpus='squeue -u $USER -o "%.T %.3C" | grep "RUNNING" | tr -s "[:space:]" | cut -d " " -f2 | paste -sd+ | bc'
+# count the total number of CPU cores you have allocated across all running jobs
+alias scpus='squeue -u $USER -o "%T %C" | grep "RUNNING" | cut -d " " -f2 | paste -sd+ | bc'
+# alias scpus='squeue -u $USER -o "%.T %.3C" | grep "RUNNING" | tr -s "[:space:]" | cut -d " " -f2 | paste -sd+ | bc'
 
-# count all the submitted cpus 
+# count all the submitted cpus
 alias scpusa='squeue -u $USER -o "%C" | tail -n +2 | tr -s "[:space:]" | paste -sd+ | bc'
 
-# count the total number of CPU cores you have allocated across all pending jobs
-alias scpus='squeue -u $USER -o "%T %C" | grep "RUNNING" | cut -d " " -f2 | paste -sd+ | bc'
+# check the queue stats json log on Big Purple
+QSTAT_JSON="/gpfs/data/molecpathlab/pipelines/queue-stats/qstats.log"
+alias qst="tail -1 ${QSTAT_JSON}"
 
 ##############################################################################
 # prevent git from trying to open GUI window for password entry
