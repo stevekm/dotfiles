@@ -132,6 +132,9 @@ alias sq2="squeue -u $USER -o '%10i %15P %10T %10M %10S %12l %3C %15R %30j' --lo
 alias screens2='for s in bigpurple-ln1 bigpurple-ln2 bigpurple-ln3 bigpurple-ln4; do ssh "$s" <<<"screen -ls" ; done'
 alias screens='ls -1 /var/run/screen/S-$USER'
 
+# same but for cron
+alias crontabs='for s in bigpurple-ln1 bigpurple-ln2 bigpurple-ln3 bigpurple-ln4; do ssh "$s" <<<"crontab -l" ; done'
+
 # count the total number of CPU cores you have allocated across all running jobs
 alias scpus='squeue -u $USER -o "%T %C" | grep "RUNNING" | cut -d " " -f2 | paste -sd+ | bc'
 # alias scpus='squeue -u $USER -o "%.T %.3C" | grep "RUNNING" | tr -s "[:space:]" | cut -d " " -f2 | paste -sd+ | bc'
