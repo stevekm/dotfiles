@@ -124,7 +124,9 @@ alias sload='sinfo -N -O nodelist,partition,statelong,cpusstate,memory,freemem'
 # https://slurm.schedmd.com/sinfo.html
 
 # check your current SLURM jobs
-alias sq="squeue -u $USER -o '%10i %15P %10T %10M %10S %12l %3C %15R %45j' --long"
+# alias sq="squeue -u $USER -o '%10i %15P %10T %10M %10S %12l %3C %15R %45j' --long"
+alias sq="squeue -u $USER -o '%10i %15P %10T %20V %20S %10M %12l %3C %15R %45j' --long"
+
 # shorter version for lower res screen
 alias sq2="squeue -u $USER -o '%10i %15P %10T %10M %10S %12l %3C %15R %30j' --long"
 
