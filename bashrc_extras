@@ -148,6 +148,14 @@ alias scpusa='squeue -u $USER -o "%C" | tail -n +2 | tr -s "[:space:]" | paste -
 QSTAT_JSON="/gpfs/data/molecpathlab/pipelines/queue-stats/qstats.log"
 alias qst="tail -1 ${QSTAT_JSON}"
 
+QAVAIL="/gpfs/data/molecpathlab/pipelines/queue-stats/qavail.py"
+alias qv="${QAVAIL}"
+
+# get extended sacct info for a job
+saj () {
+sacct -j "$1" --format="JobID,JobName,Partition,AllocCPUS,AveCPU,MaxRSS,ReqMem,Submit,Start,End,Timelimit,NodeList,State,ExitCode"
+}
+
 ##############################################################################
 # prevent git from trying to open GUI window for password entry
 ##############################################################################
