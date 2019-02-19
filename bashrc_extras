@@ -151,7 +151,7 @@ alias qst="tail -1 ${QSTAT_JSON}"
 # get the cluster node availablility; free CPUs allocated/idle/other/total, mem, and allocated mem
 qv () {
 	# collapse the sinfo table on the duplicate partition entries
-printf "FREE_MEM\tALLOCMEM\tCPUS(A/I/O/T)\tHOSTNAMES\tPARTITION\n%s\n" "$(sinfo -O 'freemem,allocmem,cpusstate,nodehost,partition' | tail -n +2 | awk '{OFS="\t"; idx=$1 OFS $2 OFS $3 }{a[idx]=(idx in a)?a[idx]","$NF:$NF}END{for(i in a) print i,a[i]}' | sort -k 3)"
+printf "FREE_MEM\tALLOCMEM\tCPUS(A/I/O/T)\tHOSTNAMES\tPARTITION\n%s\n" "$(sinfo -O 'freemem,allocmem,cpusstate,nodehost,partition' | tail -n +2 | awk '{OFS="\t"; idx=$1 OFS $2 OFS $3 OFS $4 }{a[idx]=(idx in a)?a[idx]","$NF:$NF}END{for(i in a) print i,a[i]}' | sort -k 4)"
 }
 # QAVAIL="/gpfs/data/molecpathlab/pipelines/queue-stats/qavail.py"
 # alias qv="${QAVAIL}"
