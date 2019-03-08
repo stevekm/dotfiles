@@ -161,8 +161,11 @@ saj () {
 sacct -j "$1" --format="JobID,JobName,Partition,AllocCPUS,AveCPU,MaxRSS,ReqMem,Submit,Start,End,Timelimit,NodeList,State,ExitCode"
 }
 
+# Big Purple hpc specific items
 alias qtot='/gpfs/data/molecpathlab/pipelines/queue-stats/qtotal.py'
 alias qav='/gpfs/data/molecpathlab/pipelines/queue-stats/qavail.py'
+
+export PATH="/gpfs/data/molecpathlab/pipelines/queue-stats:$PATH"
 
 ##############################################################################
 # prevent git from trying to open GUI window for password entry
