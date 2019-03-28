@@ -1,7 +1,7 @@
 SHELL:=/bin/bash
 HOMEDIR:=$(shell echo $$HOME)
 UNAME:=$(shell uname)
-
+TIMESTAMP:=$(shell date '+%Y-%m-%d-%H-%M-%S')
 # ~~~~~ Setup Conda ~~~~~ #
 # this sets the system PATH to ensure we are using in included 'conda' installation for all software
 PRE:=
@@ -121,6 +121,8 @@ add-now-to-bashrc: $(NOWSCRIPT) $(BASHRC)
 
 
 # setup tmux config
-# tmux: $(HOMEDIR)/.tmux.conf
-# $(HOMEDIR)/.tmux.conf:
-# 	cp tmux.conf "$(HOMEDIR)/.tmux.conf"
+tmux: $(HOMEDIR)/.tmux.conf
+$(HOMEDIR)/.tmux.conf:
+	[ -e "$(HOMEDIR)/.tmux.conf" ] && mv "$(HOMEDIR)/.tmux.conf" "$(HOMEDIR)/.tmux.backup_$(TIMESTAMP).conf" || :
+	cp tmux.conf "$(HOMEDIR)/.tmux.conf"
+.PHONY:$(HOMEDIR)/.tmux.conf
