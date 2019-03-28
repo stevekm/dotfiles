@@ -31,6 +31,7 @@ conda:
 # install the conda and python packages required
 # NOTE: **MUST** install ncurses from conda-forge for RabbitMQ to work!!
 conda-install:
+	conda install -y conda-forge::ncurses && \
 	conda install -y -c conda-forge tmux
 
 
