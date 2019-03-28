@@ -125,10 +125,12 @@ tmux: $(HOMEDIR)/.tmux.conf
 $(HOMEDIR)/.tmux.conf:
 	[ -e "$(HOMEDIR)/.tmux.conf" ] && mv "$(HOMEDIR)/.tmux.conf" "$(HOMEDIR)/.tmux.backup_$(TIMESTAMP).conf" || :
 	cp tmux.conf "$(HOMEDIR)/.tmux.conf"
+	echo ">>> Please enter tmux and type '<prefix> + I' to fetch the plugins"
 .PHONY:$(HOMEDIR)/.tmux.conf
 
 # tmux plugin manager
 tpm:
 	[ ! -e ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || :
 	tmux source ~/.tmux.conf
+	echo ">>> Please enter tmux and type '<prefix> + I' to fetch the plugins"
 .PHONY:tpm
