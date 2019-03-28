@@ -1,49 +1,85 @@
+SHELL:=/bin/bash
 HOMEDIR:=$(shell echo $$HOME)
+UNAME:=$(shell uname)
 
-all: link-extras add-extras-to-bashrc add-inputrc
+# ~~~~~ Setup Conda ~~~~~ #
+# this sets the system PATH to ensure we are using in included 'conda' installation for all software
+PRE:=
+CONDA_DIR:=$(PRE)conda
+PATH:=$(CONDA_DIR)/bin:$(PATH)
+unexport PYTHONPATH
+unexport PYTHONHOME
 
-# create a symlink in the home dir to the extras file in this repo
-EXTRASPATH:=$(shell python -c 'import os; print(os.path.realpath("bashrc_extras"))')
-EXTRASLINK:=$(HOMEDIR)/.bashrc_extras
-link-extras: $(EXTRASLINK)
-$(EXTRASLINK):
-	@echo ">>> Creating link to 'bashrc_extras' in home dir..."
-	@ln -s "$(EXTRASPATH)" "$(EXTRASLINK)"
+# install versions of conda for Mac or Linux
+ifeq ($(UNAME), Darwin)
+CONDASH:=Miniconda3-4.5.4-MacOSX-x86_64.sh
+endif
 
-# create the user .bashrc if it does not exist
-BASHRC:=$(HOMEDIR)/.bashrc
-$(BASHRC):
-	@echo ">>> File $(BASHRC) does not exist, creating it..."
-	@touch "$(BASHRC)"
+ifeq ($(UNAME), Linux)
+CONDASH:=Miniconda3-4.5.4-Linux-x86_64.sh
+endif
 
-# add an entry in user .bashrc to source the extras file
-add-extras-to-bashrc: $(BASHRC)
-	@if ! $$(grep -q '.bashrc_extras' $(BASHRC)); then \
-	echo ">>> Adding 'extras' entry to .bashrc..." ; \
-	echo "source '$(EXTRASLINK)'" >> "$(BASHRC)" ; \
-	fi
+CONDAURL:=https://repo.continuum.io/miniconda/$(CONDASH)
 
-# press up/down after typing a command on console to search history of just that command
-INPUTRC:=$(HOMEDIR)/.inputrc
-add-inputrc: $(INPUTRC)
-$(INPUTRC):
-	@echo ">>> File $(INPUTRC) does not exist, adding it..."
-	@cp inputrc "$(INPUTRC)"
+# install conda
+conda:
+	@echo ">>> Setting up conda..."
+	@wget "$(CONDAURL)" && \
+	bash "$(CONDASH)" -b -p "$(CONDA_DIR)" && \
+	rm -f "$(CONDASH)"
 
-# designate system as my local desktop
-LOCALFILE=.local
-local: $(LOCALFILE)
+# install the conda and python packages required
+# NOTE: **MUST** install ncurses from conda-forge for RabbitMQ to work!!
+conda-install:
+	conda install -y -c conda-forge tmux
 
-$(LOCALFILE):
-	touch $(LOCALFILE)
-	if [ -f "$(REMOTEFILE)" ]; then rm -f "$(REMOTEFILE)"; fi
 
-# designate system as a remote server
-REMOTEFILE=.remote
-remote: $(REMOTEFILE)
-$(REMOTEFILE):
-	touch $(REMOTEFILE)
-	if [ -f "$(LOCALFILE)" ]; then rm -f "$(LOCALFILE)"; fi
+
+#
+# all: link-extras add-extras-to-bashrc add-inputrc
+#
+# # create a symlink in the home dir to the extras file in this repo
+# EXTRASPATH:=$(shell python -c 'import os; print(os.path.realpath("bashrc_extras"))')
+# EXTRASLINK:=$(HOMEDIR)/.bashrc_extras
+# link-extras: $(EXTRASLINK)
+# $(EXTRASLINK):
+# 	@echo ">>> Creating link to 'bashrc_extras' in home dir..."
+# 	@ln -s "$(EXTRASPATH)" "$(EXTRASLINK)"
+#
+# # create the user .bashrc if it does not exist
+# BASHRC:=$(HOMEDIR)/.bashrc
+# $(BASHRC):
+# 	@echo ">>> File $(BASHRC) does not exist, creating it..."
+# 	@touch "$(BASHRC)"
+#
+# # add an entry in user .bashrc to source the extras file
+# add-extras-to-bashrc: $(BASHRC)
+# 	@if ! $$(grep -q '.bashrc_extras' $(BASHRC)); then \
+# 	echo ">>> Adding 'extras' entry to .bashrc..." ; \
+# 	echo "source '$(EXTRASLINK)'" >> "$(BASHRC)" ; \
+# 	fi
+#
+# # press up/down after typing a command on console to search history of just that command
+# INPUTRC:=$(HOMEDIR)/.inputrc
+# add-inputrc: $(INPUTRC)
+# $(INPUTRC):
+# 	@echo ">>> File $(INPUTRC) does not exist, adding it..."
+# 	@cp inputrc "$(INPUTRC)"
+#
+# # designate system as my local desktop
+# LOCALFILE=.local
+# local: $(LOCALFILE)
+#
+# $(LOCALFILE):
+# 	touch $(LOCALFILE)
+# 	if [ -f "$(REMOTEFILE)" ]; then rm -f "$(REMOTEFILE)"; fi
+#
+# # designate system as a remote server
+# REMOTEFILE=.remote
+# remote: $(REMOTEFILE)
+# $(REMOTEFILE):
+# 	touch $(REMOTEFILE)
+# 	if [ -f "$(LOCALFILE)" ]; then rm -f "$(LOCALFILE)"; fi
 
 # set up git username and email
 NAME:=
@@ -81,3 +117,9 @@ add-now-to-bashrc: $(NOWSCRIPT) $(BASHRC)
 	fi
 # clean:
 # 	cd ~ && rm -f .inputrc .bashrc .bashrc_extras
+
+
+# setup tmux config
+# tmux: $(HOMEDIR)/.tmux.conf
+# $(HOMEDIR)/.tmux.conf:
+# 	cp tmux.conf "$(HOMEDIR)/.tmux.conf"
