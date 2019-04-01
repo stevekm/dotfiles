@@ -7,3 +7,5 @@ foo
 foobar
 .local
 .remote
+*.log
+Miniconda*.sh

@@ -8,6 +8,8 @@ alias screens='ls -1 /var/run/screen/S-$USER'
 # same but for cron
 alias crontabs='for s in bigpurple-ln1 bigpurple-ln2 bigpurple-ln3 bigpurple-ln4; do ssh "$s" <<<"crontab -l" ; done'
 
+alias tmuxes='for s in bigpurple-ln1 bigpurple-ln2 bigpurple-ln3 bigpurple-ln4; do ssh "$s" <<<"tmux ls" ; done'
+
 # check the queue stats json log on Big Purple
 QSTAT_JSON="/gpfs/data/molecpathlab/pipelines/queue-stats/qstats.log"
 alias qst="tail -1 ${QSTAT_JSON}"

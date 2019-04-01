@@ -54,13 +54,25 @@ END {
 }
 
 if [ "$(uname)" == "Darwin" ]; then
-    # version for mac; install with Homebrew..
+    # version for mac; install greadlink with Homebrew..
     rf () {
-        greadlink -f "${1:-$PWD}"
+        local somedir="${1:-$PWD}"
+        if [ ! -e "${somedir}" ]; then
+            echo ">>> ERROR: Does not exist; ${somedir}"
+        else
+            greadlink -f "$somedir}"
+        fi
+
     }
 else
     rf () {
-        readlink -f "${1:-$PWD}"
+        local somedir="${1:-$PWD}"
+        if [ ! -e "${somedir}" ]; then
+            echo ">>> ERROR: Does not exist; ${somedir}"
+        else
+            readlink -f "${somedir}"
+        fi
+
     }
 fi
 
