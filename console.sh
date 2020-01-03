@@ -10,7 +10,7 @@ export CLICOLOR=1
 ##############################################################################
 
 command_prompt_date_string () {
-	printf '\033[0;35m[%s]\033[m\n' "$(date +%F\ %T)"
+	printf '\033[0;35m[%s](%s)\033[m\n' "$(date +%F\ %T)" "$SHLVL"
 }
 export PROMPT_COMMAND="echo; command_prompt_date_string"
 
