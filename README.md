@@ -1,7 +1,6 @@
 # Dotfiles
 
-This is a repository containing my custom dotfiles and device-independent commands that I include in them.
-Right now, I am primarily interested in .bashrc file and .bash_profile. In future updates, others may be added.
+This is a repository containing my custom dotfiles and custom commands and terminal settings. 
 
 # Installation
 
