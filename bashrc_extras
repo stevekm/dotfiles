@@ -2,8 +2,7 @@
 THIS_DIR="$(dirname $BASH_SOURCE)"
 
 source "${THIS_DIR}/console.sh"
-source "${THIS_DIR}/console.local.sh"
-# source "${THIS_DIR}/console.remote.sh"
+source "${THIS_DIR}/console.colors.sh"
 source "${THIS_DIR}/aliases.sh"
 source "${THIS_DIR}/aliases.git.sh"
 source "${THIS_DIR}/aliases.slurm.sh"
