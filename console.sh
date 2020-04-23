@@ -39,5 +39,6 @@ export PROMPT_COMMAND="echo; command_prompt_date_string"
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
-export HISTFILESIZE=-1
-export HISTSIZE=-1
+
+export HISTFILESIZE=10000000
+export HISTSIZE=10000000
