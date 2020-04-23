@@ -2,11 +2,16 @@
 # Aliases & Functions
 ##############################################################################
 THIS_DIR="$(dirname $BASH_SOURCE)"
-alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
+
+# make sure output is colorized; macOS doesnt support this option it seems
+if [ $(uname) == 'Linux' ]; then
+    alias ls='ls --color=auto'
+fi
+
 alias l='ls -Gah'
 alias lt='ls -Glahtr'
 alias ltt='ls -Glahtr | tail'
@@ -21,3 +26,4 @@ source "${THIS_DIR}/nheadt.sh"
 source "${THIS_DIR}/nheadc.sh"
 source "${THIS_DIR}/touchx.sh"
 source "${THIS_DIR}/rf.sh"
+source "${THIS_DIR}/rd.sh"
