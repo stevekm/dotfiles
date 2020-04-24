@@ -7,7 +7,7 @@ if [ "$(uname)" == "Darwin" ]; then
         if [ ! -e "${somedir}" ]; then
             echo ">>> ERROR: Does not exist; ${somedir}"
         else
-            greadlink -f "$somedir}"
+            greadlink -f "${somedir}"
         fi
 
     }
