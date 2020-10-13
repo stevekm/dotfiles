@@ -28,3 +28,5 @@ source "${THIS_DIR}/touchx.sh"
 source "${THIS_DIR}/rf.sh"
 source "${THIS_DIR}/rd.sh"
 source "${THIS_DIR}/gdiff.sh"
+source "${THIS_DIR}/nheads.sh"
+
