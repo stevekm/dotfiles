@@ -17,3 +17,17 @@ case "${HOSTNAME}" in
         export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[31m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
         ;;
     esac
+
+
+# http://pnijjar.freeshell.org/2014/screentitles/
+# Set current directory in screentitle
+case $TERM in
+    screen*)
+        # This is the escape sequence ESC k ESC \
+        SCREENTITLE='\[\ek\w\e\\\]'
+        ;;
+    *)
+        SCREENTITLE=''
+        ;;
+esac
+PS1="${SCREENTITLE}${PS1}"
