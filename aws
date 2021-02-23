@@ -1,7 +1,13 @@
 #!/bin/bash
 # commands to run in fresh AWS EC2 instance to configure things
-sudo yum update
-sudo yum install git
+
+# installs
+sudo yum update -y
+sudo yum install -y git java-1.8.0-openjdk python3 docker
+curl -s https://get.nextflow.io | bash && sudo mv nextflow /usr/bin/
+# sudo amazon-linux-extras install java-openjdk11
+
+# configurations
 git config --global user.name "Stephen Kelly"
 git config --global user.email stevekm@users.noreply.github.com
 git clone https://github.com/stevekm/dotfiles.git
