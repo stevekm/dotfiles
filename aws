@@ -3,7 +3,7 @@
 
 # installs
 sudo yum update -y
-sudo yum install -y git java-1.8.0-openjdk python3 docker
+sudo yum install -y tree htop git java-1.8.0-openjdk python3 docker
 curl -s https://get.nextflow.io | bash && sudo mv nextflow /usr/bin/
 # sudo amazon-linux-extras install java-openjdk11
 
