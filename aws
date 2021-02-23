@@ -1,0 +1,5 @@
+#!/bin/bash
+# commands to run in fresh AWS EC2 instance to configure things
+sudo yum install git
+git clone https://github.com/stevekm/dotfiles.git
+echo 'if [ -f ~/dotfiles/bashrc_extras ]; then . ~/dotfiles/bashrc_extras; fi' >> .bashrc
