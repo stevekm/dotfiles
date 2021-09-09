@@ -9,3 +9,4 @@ foobar
 .remote
 *.log
 Miniconda*.sh
+.DS_Store
