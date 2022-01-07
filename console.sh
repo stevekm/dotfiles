@@ -43,9 +43,9 @@ export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
 
 # Non-numeric values and numeric values less than zero inhibit truncation.
 # The maximum number of lines contained in the history file.
-export HISTFILESIZE="-1"
+export HISTFILESIZE=100000000
 # The number of commands to remember in the command history (see HISTORY below). The default value is 500.
-export HISTSIZE="-1"
+export HISTSIZE=100000000
 
 ##############################################################################
 # https://lukas.zapletalovi.com/2013/03/never-lost-your-bash-history-again.html
