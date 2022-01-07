@@ -35,10 +35,57 @@ export PROMPT_COMMAND="echo; command_prompt_date_string"
 #
 ## Make Bash append rather than overwrite the history on disk:
 # shopt -s histappend
+# https://linux.die.net/man/1/bash
 ##############################################################################
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
 
-export HISTFILESIZE=10000000
-export HISTSIZE=10000000
+# Non-numeric values and numeric values less than zero inhibit truncation.
+# The maximum number of lines contained in the history file.
+export HISTFILESIZE="-1"
+# The number of commands to remember in the command history (see HISTORY below). The default value is 500.
+export HISTSIZE="-1"
+
+##############################################################################
+# https://lukas.zapletalovi.com/2013/03/never-lost-your-bash-history-again.html
+# NOTE: I modified the script a little
+#####
+# This script creates monthly backups of the bash history file. Make sure you have
+# HISTSIZE set to large number (more than number of commands you can type in every
+# month). It keeps last 200 commands when it "rotates" history file every month.
+# Typical usage in a bash profile:
+#
+# HISTSIZE=90000
+# source ~/bin/history-backup
+#
+# And to search whole history use:
+# grep xyz -h --color ~/bash_history/*
+#
+
+KEEP=10000
+BASH_HIST=~/.bash_history
+BASH_HIST_DIR=~/bash_history
+mkdir -p "${BASH_HIST_DIR}"
+BACKUP="${BASH_HIST_DIR}/bash_history.$(date +%y%m)"
+# use these vars so I can tell what behavior this script took from env
+export HIST_FILE_IS_NEWER="False"
+export HIST_FILE_COPIED_CURRENT_TO_BACKUP="False"
+export HIST_FILE_CREATED_NEW_BACKUP="False"
+
+# -s file is not zero size
+# -a "and" operator for multple tests
+# -nt file f1 is newer than f2
+if [ -s "$BASH_HIST" -a "$BASH_HIST" -nt "$BACKUP" ]; then
+  # history file is newer then backup
+  HIST_FILE_IS_NEWER="True"
+  if [[ -f $BACKUP ]]; then
+    # there is already a backup
+    cp -f $BASH_HIST $BACKUP && HIST_FILE_COPIED_CURRENT_TO_BACKUP="True"
+  else
+    # create new backup, leave last few commands and reinitialize
+    mv -f $BASH_HIST $BACKUP && HIST_FILE_CREATED_NEW_BACKUP="True"
+    tail -n$KEEP $BACKUP > $BASH_HIST
+    history -r
+  fi
+fi
