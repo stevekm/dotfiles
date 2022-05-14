@@ -3,6 +3,7 @@ THIS_DIR="$(dirname "${(%):-%x}")"
 
 source "${THIS_DIR}/aliases.sh"
 source "${THIS_DIR}/aliases.git.sh"
+source "${THIS_DIR}/console.zsh"
 
 # Search history with up / down arrow keys
 # https://unix.stackexchange.com/questions/16101/zsh-search-history-on-up-and-down-keys
