@@ -1,5 +1,6 @@
 # zsh console customizations
 # default: /etc/zshrc
+export CLICOLOR=1
 
 # history
 HISTSIZE=2000000
