@@ -1,6 +1,6 @@
 #!/bin/bash
 # get the full absolute path to a file or dir
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
     # version for mac; install greadlink with Homebrew..; $ brew install coreutils
     rf () {
         local somedir="${1:-$PWD}"
