@@ -81,7 +81,8 @@ if [ -s "$BASH_HIST" -a "$BASH_HIST" -nt "$BACKUP" ]; then
   HIST_FILE_IS_NEWER="True"
   if [[ -f $BACKUP ]]; then
     # there is already a backup
-    cp -f $BASH_HIST $BACKUP && HIST_FILE_COPIED_CURRENT_TO_BACKUP="True"
+    # cp -f $BASH_HIST $BACKUP && HIST_FILE_COPIED_CURRENT_TO_BACKUP="True"
+    /bin/cp $BASH_HIST $BACKUP && HIST_FILE_COPIED_CURRENT_TO_BACKUP="True"
   else
     # create new backup, leave last few commands and reinitialize
     mv -f $BASH_HIST $BACKUP && HIST_FILE_CREATED_NEW_BACKUP="True"
