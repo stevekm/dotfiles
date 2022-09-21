@@ -28,19 +28,19 @@ fi
 ll () {
   # only GNU has --version flag, needs --color=auto
   if ls --version &>/dev/null; then
-    ls --color=auto -lah
+    ls --color=auto -lah ${1:-}
   else
     # it must be BSD version so use -G
-    ls -Glah
+    ls -Glah ${1:-}
   fi
 }
 
 # alias lt='ls -Glahtr'
 lt () {
   if ls --version &>/dev/null; then
-    ls --color=auto -lahtr
+    ls --color=auto -lahtr ${1:-}
   else
-    ls -Glahtr
+    ls -Glahtr ${1:-}
   fi
 }
 
