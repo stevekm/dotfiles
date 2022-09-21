@@ -12,18 +12,41 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
+# NOTE: macOS BSD ls and GNU ls have different color args
+# https://www.cyberciti.biz/faq/how-to-turn-on-or-off-colors-in-bash/
+# macOS BSD: ls -G
+# GNU: ls --color=auto
+# NOTE: sometimes on macOS, using conda will install GNU ls ....
+# https://stackoverflow.com/questions/1676426/how-to-check-the-ls-version
+
 # make sure output is colorized; macOS doesnt support this option it seems
-if [ $(uname) = 'Linux' ]; then
+if ls --version &>/dev/null; then
     alias ls='ls --color=auto'
 fi
 
-alias l='ls -Gah'
-alias lt='ls -Glahtr'
-alias ltt='ls -Glahtr | tail'
-alias ll='ls -lah'
+# alias ll='ls -lah'
+ll () {
+  # only GNU has --version flag, needs --color=auto
+  if ls --version &>/dev/null; then
+    ls --color=auto -lah
+  else
+    # it must be BSD version so use -G
+    ls -Glah
+  fi
+}
+
+# alias lt='ls -Glahtr'
+lt () {
+  if ls --version &>/dev/null; then
+    ls --color=auto -lahtr
+  else
+    ls -Glahtr
+  fi
+}
 
 # kill all processes started by the current user
-alias megakill="ps u | tr -s [[:space:]] | cut -f2 -d' ' | xargs kill"
+# alias megakill="ps u | tr -s [[:space:]] | cut -f2 -d' ' | xargs kill"
+
 
 source "${THIS_DIR}/t.sh"
 source "${THIS_DIR}/catcsv.sh"
