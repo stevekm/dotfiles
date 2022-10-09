@@ -1,23 +1,24 @@
 #!/bin/bash
-# get the full absolute path to a file or dir
+# get the full absolute path to the dirname of file or dir
+# this is useful when you need the full dir path to navigate to for CyberDuck
 if [ "$(uname)" = "Darwin" ]; then
     # version for mac; install greadlink with Homebrew..; $ brew install coreutils
-    rf () {
+    rd () {
         local somedir="${1:-$PWD}"
         if [ ! -e "${somedir}" ]; then
             echo ">>> ERROR: Does not exist; ${somedir}"
         else
-            greadlink -f "${somedir}"
+            dirname "$(greadlink -f "$somedir}")"
         fi
 
     }
 else
-    rf () {
+    rd () {
         local somedir="${1:-$PWD}"
         if [ ! -e "${somedir}" ]; then
             echo ">>> ERROR: Does not exist; ${somedir}"
         else
-            readlink -f "${somedir}"
+            dirname "$(readlink -f "${somedir}")"
         fi
 
     }

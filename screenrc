@@ -1,0 +1,17 @@
+# configs for screen
+# set this file as ~/.screenrc
+
+# https://www.gnu.org/software/screen/manual/html_node/Default-Key-Bindings.html#Default-Key-Bindings
+# https://www.gnu.org/software/screen/manual/html_node/Command-Summary.html#Command-Summary
+# https://debian-administration.org/article/560/An_introduction_to_the_visual_features_of_GNU_Screen
+
+# https://www.gnu.org/software/screen/manual/html_node/Startup-Files.html
+# Two configuration files are shipped as examples with your screen distribution: etc/screenrc and etc/etcscreenrc.
+
+# shelltitle "$ |bash"
+# shelltitle "foooo"
+
+# don't display the copyright page
+startup_message off
+
+defscrollback 10000
