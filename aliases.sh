@@ -25,6 +25,10 @@ if ls --version &>/dev/null; then
 fi
 
 # alias ll='ls -lah'
+# there might already be an alias for ll from the global system
+# https://askubuntu.com/questions/372926/bash-syntax-error-near-unexpected-token
+# https://stackoverflow.com/questions/9783507/how-can-i-check-in-my-bashrc-if-an-alias-was-already-set
+unalias ll 2>/dev/null
 ll () {
   # only GNU has --version flag, needs --color=auto
   if ls --version &>/dev/null; then
