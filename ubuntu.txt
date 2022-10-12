@@ -1,0 +1,30 @@
+# some packages commonly installed in Ubuntu 
+# sudo apt install
+
+# utilities
+git 
+htop
+make
+screen
+bzip2
+openjdk-18-jre
+
+# dev
+r-base
+python
+openjdk-18-jre
+
+# system tools
+hddtemp
+inxi
+jq
+lm-sensors
+net-tools
+psensor
+openssh-server
+sensors-applet
+sublime-text
+sysstat
+stress-ng
+flatpak
+apt-transport-https
