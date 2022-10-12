@@ -7,6 +7,7 @@ htop
 make
 screen
 bzip2
+curl
 openjdk-18-jre
 
 # dev
