@@ -12,7 +12,7 @@ openjdk-18-jre
 # dev
 r-base
 python
-openjdk-18-jre
+openjdk-18-jdk
 
 # system tools
 hddtemp
