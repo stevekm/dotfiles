@@ -4,6 +4,7 @@
 # utilities
 git 
 htop
+btop
 make
 screen
 bzip2
