@@ -8,6 +8,7 @@ make
 screen
 bzip2
 curl
+tree
 openjdk-18-jre
 
 # dev
