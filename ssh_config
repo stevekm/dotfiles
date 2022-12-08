@@ -1,0 +1,3 @@
+# copy this file to ~/.ssh/config
+Host *
+ ServerAliveInterval 600
