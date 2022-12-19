@@ -1,0 +1,19 @@
+# environment file for conda
+#
+# USAGE:
+# install the latest Miniconda ;
+# https://docs.conda.io/en/latest/miniconda.html
+# https://repo.anaconda.com/miniconda/
+#
+# make sure to run the shell init commands to add it to your default shells' default login environment
+# install these packages with command;
+#
+# $ conda env update -n base -f environment.yml
+#
+# name: base
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - make>=4 # https://stackoverflow.com/questions/32153034/oneshell-not-working-properly-in-makefile
