@@ -1,8 +1,12 @@
 # Dotfiles
 
-This is a repository containing my custom dotfiles and custom commands and terminal settings. 
+This is a repository containing my custom dotfiles and custom commands and terminal settings.
 
 # Installation
+
+NOTE: Some of this is probably outdated
+
+-----
 
 Clone this repo
 
@@ -34,6 +38,8 @@ make git-setup-username git-setup-email NAME="My Name" EMAIL="github_username@us
 ```
 
 ## Conda
+
+NOTE: Some of this is probably outdated
 
 A conda installation can be created like this:
 
