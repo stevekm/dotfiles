@@ -10,3 +10,4 @@ foobar
 *.log
 Miniconda*.sh
 .DS_Store
+dotfiles.code-workspace
