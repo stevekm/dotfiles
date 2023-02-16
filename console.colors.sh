@@ -19,6 +19,9 @@ case "${HOSTNAME}" in
     *.ec2.*) # orange for AWS EC2
         export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[\e[38;5;214m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
         ;;
+    ip-*) # orange for AWS EC2
+        export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[\e[38;5;214m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+        ;;
     *) # red for everything else
         export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[31m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
         ;;
