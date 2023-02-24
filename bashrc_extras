@@ -5,6 +5,9 @@ source "${THIS_DIR}/console.sh"
 source "${THIS_DIR}/console.colors.sh"
 source "${THIS_DIR}/aliases.sh"
 source "${THIS_DIR}/aliases.git.sh"
+
+# settings for SLURM
 # source "${THIS_DIR}/aliases.slurm.sh"
-# source "${THIS_DIR}/aliases.bigpurple.sh"
+if which sbatch &>/dev/null; then source "${THIS_DIR}/aliases.slurm.sh"; fi
+
 source "${THIS_DIR}/ssh_settings.sh"
