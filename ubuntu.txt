@@ -1,8 +1,8 @@
-# some packages commonly installed in Ubuntu 
+# some packages commonly installed in Ubuntu
 # sudo apt install
 
 # utilities
-git 
+git
 htop
 btop
 make
@@ -39,7 +39,8 @@ apt-transport-https
 # install Docker; https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
 
 # install Singularity https://singularity-tutorial.github.io/01-installation/
-
+# https://apptainer.org/admin-docs/master/installation.html
+# see also; https://sylabs.io/2023/03/installing-singularityce-on-macos-with-apple-silicon-using-utm/
 
 # boot settings
 $ cat /etc/default/grub
