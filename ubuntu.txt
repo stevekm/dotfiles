@@ -21,7 +21,7 @@ openjdk-18-jdk
 
 
 
-# system tools
+# system tools (some of these might not be needed or might be deprecated)
 hddtemp
 inxi
 jq
@@ -36,14 +36,79 @@ stress-ng
 flatpak
 apt-transport-https
 
-# install Docker; https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
 
-# install Singularity https://singularity-tutorial.github.io/01-installation/
-# https://apptainer.org/admin-docs/master/installation.html
+
+# install Docker; https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+# First, update your existing list of packages:
+# sudo apt update
+# Next, install a few prerequisite packages which let apt use packages over HTTPS:
+# sudo apt install apt-transport-https ca-certificates curl software-properties-common
+# Then add the GPG key for the official Docker repository to your system:
+# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+# Add the Docker repository to APT sources:
+# sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+# Make sure you are about to install from the Docker repo instead of the default Ubuntu repo:
+# apt-cache policy docker-ce
+# Finally, install Docker:
+# sudo apt install docker-ce
+# Docker should now be installed, the daemon started, and the process enabled to start on boot. Check that it’s running:
+# sudo systemctl status docker
+# If you want to avoid typing sudo whenever you run the docker command, add your username to the docker group:
+# sudo usermod -aG docker ${USER}
+# To apply the new group membership, log out of the server and back in, or type the following:
+# su - ${USER}
+# Confirm that your user is now added to the docker group by typing:
+# groups
+# If you need to add a user to the docker group that you’re not logged in as, declare that username explicitly using:
+# sudo usermod -aG docker username
+# test that it works;
+# $ docker run --rm -ti ubuntu:latest
+
+
+# install Singularity
+# https://docs.sylabs.io/guides/3.11/admin-guide/installation.html
+# https://github.com/sylabs/singularity/releases
 # see also; https://sylabs.io/2023/03/installing-singularityce-on-macos-with-apple-silicon-using-utm/
+# install Golang; https://go.dev/doc/install
+# tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz
+# add the following line to your $HOME/.profile or /etc/profile (for a system-wide installation):
+# export PATH=$PATH:/usr/local/go/bin
+# Verify
+# go version
+# On Ubuntu or Debian install the following dependencies:
+# # Ensure repositories are up-to-date
+# sudo apt-get update
+# # Install debian packages for dependencies
+# sudo apt-get install -y \
+#    build-essential \
+#    libseccomp-dev \
+#    libglib2.0-dev \
+#    pkg-config \
+#    squashfs-tools \
+#    cryptsetup \
+#    runc
+# Download source code
+# $ export VERSION=3.11.0 && # adjust this as necessary \
+#     wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-ce-${VERSION}.tar.gz && \
+#     tar -xzf singularity-ce-${VERSION}.tar.gz && \
+#     cd singularity-ce-${VERSION}
+# Compile Singularity
+# $ ./mconfig --without-conmon &&     make -C ./builddir &&     sudo make -C ./builddir install
+# Test that it works
+# $ singularity exec library://alpine cat /etc/alpine-release
+# $ singularity pull container.sif docker://alpine:latest
+
+# OLD docs for Singularity installation;
+# https://singularity-tutorial.github.io/01-installation/
+# https://apptainer.org/admin-docs/master/installation.html
+# https://github.com/apptainer/singularity/releases
+
+
+
 
 # boot settings
-$ cat /etc/default/grub
+# show all messages during boot
+# $ cat /etc/default/grub
 # If you change this file, run 'update-grub' afterwards to update
 # /boot/grub/grub.cfg.
 # For full documentation of the options in this file, see:
