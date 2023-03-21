@@ -119,3 +119,29 @@ apt-transport-https
 #sudo update-grub
 GRUB_CMDLINE_LINUX_DEFAULT=""
 GRUB_CMDLINE_LINUX=""
+
+
+
+# Nividia Driver Installation
+# https://help.ubuntu.com/community/NvidiaDriversInstallation
+# ^^^ this one never seems to work right
+#
+# CUDA installation
+# https://docs.nvidia.com/cuda/cuda-installation-guide-linux/
+# https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=deb_network
+# more issues here; https://askubuntu.com/questions/1436506/how-to-resolve-unmet-dependencies-error-when-upgrading-depends-nvidia-kernel-c
+#
+# first install the nvidia driver;
+# sudo apt install nvidia-driver-515
+#
+# then do the local CUDA install method
+# wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin
+# sudo mv cuda-ubuntu2204.pin /etc/apt/preferences.d/cuda-repository-pin-600
+# wget https://developer.download.nvidia.com/compute/cuda/12.1.0/local_installers/cuda-repo-ubuntu2204-12-1-local_12.1.0-530.30.02-1_amd64.deb
+# sudo dpkg -i cuda-repo-ubuntu2204-12-1-local_12.1.0-530.30.02-1_amd64.deb
+# sudo cp /var/cuda-repo-ubuntu2204-12-1-local/cuda-*-keyring.gpg /usr/share/keyrings/
+# sudo apt-get update
+# sudo apt-get -y install cuda
+
+# https://stackoverflow.com/questions/43022843/nvidia-nvml-driver-library-version-mismatch
+
