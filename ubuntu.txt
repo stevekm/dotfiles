@@ -145,3 +145,51 @@ GRUB_CMDLINE_LINUX=""
 
 # https://stackoverflow.com/questions/43022843/nvidia-nvml-driver-library-version-mismatch
 
+
+
+
+# Swap file configuration
+# https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04
+# https://askubuntu.com/questions/927854/how-do-i-increase-the-size-of-swapfile-without-removing-it-in-the-terminal
+# https://help.ubuntu.com/community/SwapFaq
+# check existing swap and memory usages
+# $ sudo swapon --show
+# $ free -h
+# $ df -h
+# create 100GB swap file
+# $ sudo fallocate -l 100G /swapfile
+# $ sudo chmod 600 /swapfile
+# $ sudo mkswap /swapfile
+# $ sudo swapon /swapfile
+# can be done with multiple files for swap
+# add to /etc/fstab to make permanent
+# entry should look like this
+# '/swapfile none swap sw 0 0'
+
+
+
+
+# Format and mount drive
+# https://phoenixnap.com/kb/linux-format-disk
+# https://kwilson.io/blog/format-a-linux-disk-as-ext4-from-the-command-line/
+# https://askubuntu.com/questions/517354/terminal-method-of-formatting-storage-drive
+# https://help.ubuntu.com/community/Fstab
+# find drive UUID
+# $ lsblk -f
+# also
+# $ ls -l /dev/disk/by-uuid/
+# format drive
+# $ sudo mkfs ext4 -L P4600 /dev/nvme2n1p1 # wait this one did not work it make an ext2 volume instead
+# $ sudo mkfs.ext4 -L P4600 /dev/nvme2n1p1
+# get UUID again
+# $ lsblk -f
+# mount the drive
+# $ sudo mount UUID=ebbb4fad-6329-4914-b800-e3ed22b36574 /mnt/P4600
+# add to /etc/fstab
+# UUID=ebbb4fad-6329-4914-b800-e3ed22b36574 /mnt/P4600               ext4    defaults 0       0
+# mount all volumes
+# $ sudo mount -a
+
+
+
+
