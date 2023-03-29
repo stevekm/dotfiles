@@ -35,6 +35,8 @@ sysstat
 stress-ng
 flatpak
 apt-transport-https
+flatpak
+# https://flatpak.org/setup/Ubuntu
 
 
 

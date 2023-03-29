@@ -1,0 +1,6 @@
+https://boinc.berkeley.edu/wiki/Installing_on_Linux
+$ sudo apt install boinc-client boinc-manager
+https://boinc.berkeley.edu/wiki/Stop_or_start_BOINC_daemon_after_boot
+$ /etc/init.d/boinc-client status|start
+$ sudo usermod -a -G boinc username
+$ chmod g+w /var/lib/boinc-client/
