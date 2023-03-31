@@ -1,16 +1,29 @@
 ##############################################################################
 # Aliases & Functions for SLURM (generic)
 ##############################################################################
+# NOTE: aliases updated for use with slurm 22.05.7
+# https://slurm.schedmd.com/quickstart.html#commands
+# https://slurm.schedmd.com/pdfs/summary.pdf
+
+
+# NOTE: the standard default commands;
+# squeue
+# sinfo
+# sacct -j jobID
+# scontrol
+
+
 # get node usage metrics on SLURM
 alias sload='sinfo -N -O nodelist,partition,statelong,cpusstate,memory,freemem'
 # https://slurm.schedmd.com/sinfo.html
 
 # check your current SLURM jobs
+alias sq="squeue -u $USER --long"
 # alias sq="squeue -u $USER -o '%10i %15P %10T %10M %10S %12l %3C %15R %45j' --long"
-alias sq="squeue -u $USER -o '%10i %15P %10T %20V %20S %10M %12l %3C %15R %45j' --long"
-
+# alias sq="squeue -u $USER -o '%10i %15P %10T %20V %20S %10M %12l %3C %15R %45j' --long"
+# alias sq="squeue -u $USER -o '%10i %15P %10T %20V %20S %10M %12l %3C %15R %45j'"
 # shorter version for lower res screen
-alias sq2="squeue -u $USER -o '%10i %15P %10T %10M %10S %12l %3C %15R %30j' --long"
+# alias sq2="squeue -u $USER -o '%10i %15P %10T %10M %10S %12l %3C %15R %30j' --long"
 
 # count the total number of CPU cores you have allocated across all running jobs
 alias scpus='squeue -u $USER -o "%T %C" | grep "RUNNING" | cut -d " " -f2 | paste -sd+ | bc'
@@ -24,8 +37,6 @@ qv () {
 	# collapse the sinfo table on the duplicate partition entries
 printf "FREE_MEM\tALLOCMEM\tCPUS(A/I/O/T)\tHOSTNAMES\tPARTITION\n%s\n" "$(sinfo -O 'freemem,allocmem,cpusstate,nodehost,partition' | tail -n +2 | awk '{OFS="\t"; idx=$1 OFS $2 OFS $3 OFS $4 }{a[idx]=(idx in a)?a[idx]","$NF:$NF}END{for(i in a) print i,a[i]}' | sort -k 4)"
 }
-# QAVAIL="/gpfs/data/molecpathlab/pipelines/queue-stats/qavail.py"
-# alias qv="${QAVAIL}"
 
 # get extended sacct info for a job
 saj () {
