@@ -191,7 +191,6 @@ GRUB_CMDLINE_LINUX=""
 # UUID=ebbb4fad-6329-4914-b800-e3ed22b36574 /mnt/P4600               ext4    defaults 0       0
 # mount all volumes
 # $ sudo mount -a
-#
 
 
 
