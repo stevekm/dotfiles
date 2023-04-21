@@ -77,7 +77,7 @@ Extra notes specific to setting up macOS
 
 #### [Homebrew](http://brew.sh/)
 - Application manager for macOS
-- see the homepage for the latest install instructions; `https://brew.sh/`
+- see the homepage for the latest install instructions; https://brew.sh/
 - some homebrew repos that you might need to add (or maybe not):
 ```bash
 brew tap caskroom/cask
@@ -85,7 +85,7 @@ brew tap homebrew/science
 ```
 - other useful Homebrew packages
 ```bash
-# some GNU-like utilities that don't ship with macOS bash by default
+# some GNU-like utilities that don't ship with macOS by default
 brew install coreutils
 
 # helpful tools
@@ -117,7 +117,8 @@ brew install bash
 - File manager for remote servers
 - **Lets you edit code saved on remote servers in your local editor and syncs changes back to the remote server as you make them!**
 - stop trying to dev your code on the remote server using `vim` and just open the remote code locally in your locally installed VS Code
-- - also dont bother using the "sftp" extension for VS Code because Cyberduck can open **all** files in the local app of your choice
+ - also dont bother using the "sftp" extension for VS Code because Cyberduck can open **all** files in the local app of your choice
+ - thank you CyberDuck you're a life saver! :)
 
 ##### [iTerm2](https://www.iterm2.com/downloads.html)
 - Better terminal for OS X
