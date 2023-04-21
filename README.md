@@ -85,6 +85,16 @@ Notes specific to setting up a personal Ubuntu instance are in `ubuntu.txt`
 
 Extra notes specific to setting up macOS
 
+#### XCode
+- https://developer.apple.com/xcode/resources/
+ - also on the App Store https://apps.apple.com/us/app/xcode/id497799835?mt=12
+- has a bunch of core tools and libraries that all dev tools require
+- if you are not actually building macOS / iOS apps, then you do not need to download the entire giant XCode application, you **only** need the CLI Tools supplemental pack, which must be installed separately
+- HOWEVER, Apple has recently started requiring you to log in with an Apple ID in order to access the CLI Tools installer (previously it was all publically downloadable), so you will likely have to either click through that homepage and login with an Apple ID, or log in to the Apple App Store to download
+- after you have installed Xcode and/or the Xcode CLI Tools packs, you **must** accept License Agreement before any cli tool (such as `git`) will work
+- accepting the agreement can sometimes be a PIA to do from the Terminal, so it might be easier to just go ahead and install the full Xcode application anyway if only to have an easier GUI window to click through to "Accept" the first time you launch Xcode
+- sometimes if you upgrade macOS, you might need to do this whole process again before your cli tools (which worked fine before upgrading) will work again. Thanks, Apple.
+
 #### [Homebrew](http://brew.sh/)
 - Application manager for macOS
 - see the homepage for the latest install instructions; https://brew.sh/
