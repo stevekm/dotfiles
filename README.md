@@ -30,6 +30,16 @@ Should look like this:
 
 ![image](https://cloud.githubusercontent.com/assets/10505524/21250576/5f4f884a-c314-11e6-90c2-9156e6c89b7d.png)
 
+Also do not forget to copy the included `inputrc` file to enable better scrollback in your terminal;
+
+```
+cp inputrc ~/.inputrc
+```
+
+(also requires a terminal restart to take effect)
+
+With this, you will be able to e.g. type `s` into your shell then press Up/Down Arrow keys to scroll through all commands in your shell history that start with "s" (such as that long ssh command you used last month which you cant remember now). 
+
 ## Git
 
 Set up your `git` username and email.
