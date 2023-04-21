@@ -42,6 +42,8 @@ With this, you will be able to e.g. type `s` into your shell then press Up/Down 
 
 ## Git
 
+**NOTE**: if you are on macOS and your `git` is not working, check out the section below about setting up Xcode first
+
 Set up your `git` username and email.
 
 You might be able to use a command like this;
