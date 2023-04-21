@@ -173,6 +173,8 @@ brew install bash
 brew cask install xquartz
 ```
 - after installation, make sure you log into the server with the `-Y` argument: `ssh username@server.com -Y`
+- with this installed, opening a program in the terminal which can use X11 windows (such as IGV or Firefox) should auto-magically load in a GUI X window on your local Mac
+- latency is extremely high while running remote apps via local X windows like this so its recommended only for testing purposes, not a good solution for programs you need to use heavily frequently
 
 ##### [MacTeX](http://www.tug.org/mactex/)
 - LaTeX PDF typesetting program installation for OS X
