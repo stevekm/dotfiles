@@ -1,0 +1,34 @@
+These are old notes on how to set up some extra stuff which was previously part of a Makefile
+
+# set up 'now' logger
+# https://github.com/stevekm/now-log.git
+# git@github.com:stevekm/now-log.git
+NOWDIR:=$(HOMEDIR)/now-log
+NOWSCRIPT:=$(NOWDIR)/now-logger.sh
+now: now-clone add-now-to-bashrc
+now-clone: $(NOWDIR)
+$(NOWDIR) $(NOWSCRIPT):
+	git clone https://github.com/stevekm/now-log.git "$(NOWDIR)"
+add-now-to-bashrc: $(NOWSCRIPT) $(BASHRC)
+	@if ! $$(grep -q 'now-logger.sh' $(BASHRC)); then \
+	echo ">>> Adding 'now' entry to .bashrc..." ; \
+	echo "source '$(NOWSCRIPT)'" >> "$(BASHRC)" ; \
+	fi
+# clean:
+# 	cd ~ && rm -f .inputrc .bashrc .bashrc_extras
+
+
+# setup tmux config
+tmux: $(HOMEDIR)/.tmux.conf
+$(HOMEDIR)/.tmux.conf:
+	[ -e "$(HOMEDIR)/.tmux.conf" ] && mv "$(HOMEDIR)/.tmux.conf" "$(HOMEDIR)/.tmux.backup_$(TIMESTAMP).conf" || :
+	cp tmux.conf "$(HOMEDIR)/.tmux.conf"
+	echo ">>> Please enter tmux and type '<prefix> + I' to fetch the plugins"
+.PHONY:$(HOMEDIR)/.tmux.conf
+
+# tmux plugin manager
+tpm:
+	[ ! -e ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || :
+	tmux source ~/.tmux.conf
+	echo ">>> Please enter tmux and type '<prefix> + I' to fetch the plugins"
+.PHONY:tpm
