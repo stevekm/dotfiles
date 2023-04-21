@@ -64,3 +64,90 @@ bash Miniconda3-latest-MacOSX-arm64.sh
 I generally let the installer put Miniconda in the default location (`~/miniconda3`) and let it run the `conda init` step.
 
 NOTE that running `conda init` will update your `.bashrc` and/or `.zshrc`, and possibly other shell config files, in order to make `conda` available by default in your shell. If you are going to use the `bashrc_extras` and `zshrc_extras` included here, you **MUST** update your `.bashrc`/`.zshrc` in order to `source` these files **after** the section included by `conda init`. Otherwise, both conda and the extras included here are likely to not work.
+
+## More
+
+### Ubuntu 
+
+Notes specific to setting up a personal Ubuntu instance are in `ubuntu.txt`
+
+### macOS
+
+Extra notes specific to setting up macOS
+
+#### [Homebrew](http://brew.sh/)
+- Application manager for macOS
+- see the homepage for the latest install instructions; `https://brew.sh/`
+- some homebrew repos that you might need to add (or maybe not):
+```bash
+brew tap caskroom/cask
+brew tap homebrew/science
+```
+- other useful Homebrew packages
+```bash
+# some GNU-like utilities that don't ship with macOS bash by default
+brew install coreutils
+
+# helpful tools
+brew install wget 
+brew install awscli
+brew install btop
+brew install tree
+brew install watch
+
+# quick & easy batch image conversion in the Terminal
+brew install imagemagick
+
+# manipulation of PDFs
+brew install ghostscript
+
+# if you ran into .7z archives or other weird archives you need to extract
+brew install p7zip
+
+# the versions of some basic tools included in macOS are ancient so you might want newer versions with extra better features
+brew install rsync
+brew install make  # GNU "make" has been installed as "gmake"
+brew install bash 
+```
+
+#### Apps
+
+##### [CyberDuck](https://cyberduck.io/)
+- also on the App Store; https://cyberduck.io/appstore
+- File manager for remote servers
+- **Lets you edit code saved on remote servers in your local editor and syncs changes back to the remote server as you make them!**
+- stop trying to dev your code on the remote server using `vim` and just open the remote code locally in your locally installed VS Code
+- - also dont bother using the "sftp" extension for VS Code because Cyberduck can open **all** files in the local app of your choice
+
+##### [iTerm2](https://www.iterm2.com/downloads.html)
+- Better terminal for OS X
+
+##### [VS Code](https://code.visualstudio.com/download)
+- Good code editor
+- if you dont like Visual Studio Code then try Sublime Text
+
+##### [Paintbrush](https://paintbrush.sourceforge.io/)
+- MS Paint alternative for Mac. Quick & easy image editing. Or just use Preview.
+
+##### [Scroll Reverser](https://pilotmoon.com/scrollreverser/)
+- Reverse scrolling direction of touchpad and/or mouse on Mac, so you can have your mouse use normal scrolling and your touchpad use natural scrolling
+
+##### BetterSnapTool
+- allows you to snap windows properly to the sides of the screen in macOS (the way that Windows and Ubuntu have done for years.... thanks Apple...)
+- https://www.folivora.ai/bettersnaptool/
+- https://apps.apple.com/us/app/bettersnaptool/id417375580?mt=12
+
+##### Docker
+- run containers
+- there is no longer any method to install Docker on macOS without jumping through hoops on Docker's website first, here: https://docs.docker.com/desktop/install/mac-install/
+
+
+##### [XQuartz](https://www.xquartz.org/)
+- Enables X11 graphical windows for terminal programs on remote servers, like IGV
+```
+brew cask install xquartz
+```
+- after installation, make sure you log into the server with the `-Y` argument: `ssh username@server.com -Y`
+
+##### [MacTeX](http://www.tug.org/mactex/)
+- LaTeX PDF typesetting program installation for OS X
