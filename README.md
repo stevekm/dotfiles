@@ -138,9 +138,11 @@ brew install bash
 - also on the App Store; https://cyberduck.io/appstore
 - File manager for remote servers
 - **Lets you edit code saved on remote servers in your local editor and syncs changes back to the remote server as you make them!**
-- stop trying to dev your code on the remote server using `vim` and just open the remote code locally in your locally installed VS Code
+- stop trying to dev your code on the remote server using `vim` and just open the remote code locally in your locally installed VS Code through CyberDuck
  - also dont bother using the "sftp" extension for VS Code because Cyberduck can open **all** files in the local app of your choice
  - thank you CyberDuck you're a life saver! :)
+- set up a Bookmark for your desired server, using SFTP and your ssh credentials to access the server's remote filesystem
+- CyberDuck supports a ton of other remote access methods like FTP, S3, etc., but SFTP tends to be the most useful since it gives you access to any server you can `ssh` into
 
 ##### [iTerm2](https://www.iterm2.com/downloads.html)
 - Better terminal for OS X
