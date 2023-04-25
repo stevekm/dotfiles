@@ -4,3 +4,6 @@ https://boinc.berkeley.edu/wiki/Stop_or_start_BOINC_daemon_after_boot
 $ /etc/init.d/boinc-client status|start
 $ sudo usermod -a -G boinc username
 $ chmod g+w /var/lib/boinc-client/
+
+# boinc-client -> /etc/init.d/boinc-client
+# ./boinc-client start|stop
