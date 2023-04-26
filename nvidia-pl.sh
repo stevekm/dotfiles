@@ -17,7 +17,7 @@
 #Enable persistence mode
 sudo nvidia-smi -pm ENABLED
 #Set power limit to 240Watts
-sudo nvidia-smi -pl 240
+sudo nvidia-smi -pl 200
 
 # check current power settings with
 # sudo nvidia-smi -q -d POWER
