@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# script to set Nvidia GPU power limit to 240W
+# script to set Nvidia GPU power limit
 
 # set the script to run at boot
 # https://askubuntu.com/questions/290099/how-to-run-a-script-during-boot-as-root/290107#290107
@@ -16,8 +16,9 @@
 
 #Enable persistence mode
 sudo nvidia-smi -pm ENABLED
+
 #Set power limit to 240Watts
-sudo nvidia-smi -pl 200
+sudo nvidia-smi -pl 240
 
 # check current power settings with
 # sudo nvidia-smi -q -d POWER
