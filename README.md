@@ -2,6 +2,8 @@
 
 This is a repository containing my custom dotfiles and custom commands and terminal settings.
 
+It also contains my notes for software installations and configurations for various systems, especially Linux and macOS.
+
 # Setup
 
 Clone this repo
@@ -46,17 +48,9 @@ With this, you will be able to e.g. type `s` into your shell then press Up/Down 
 
 Set up your `git` username and email.
 
-You might be able to use a command like this;
-
-```
-make git-setup-username git-setup-email NAME="My Name" EMAIL="github_username@users.noreply.github.com"
-```
-
-Or you can use commands like this;
-
 ```
 git config --global user.name "My Name"
-git config --global user.email "my_github_username@users.noreply.github.com"
+git config --global user.email "username@users.noreply.github.com"
 ```
 
 ## Conda
@@ -82,6 +76,10 @@ NOTE that running `conda init` will update your `.bashrc` and/or `.zshrc`, and p
 ### Ubuntu 
 
 Notes specific to setting up a personal Ubuntu instance are in `ubuntu.txt`
+
+### Nvidia GPU
+
+Notes specific to configuring advanced settings for Nvidia GPU are in `nvidia.txt` and also in `ubuntu.txt`
 
 ### macOS
 
