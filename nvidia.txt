@@ -1,0 +1,29 @@
+Notes on Nvidia GPU configurations, especially in Linux
+also see notes about Nvidia driver installation in ubuntu.txt
+most nvidia-smi commands also work in Windows terminal too
+
+resources for Nvidia Driver
+- https://docs.nvidia.com/deploy/driver-persistence/index.html#overview
+
+resources for NVLink
+- https://support.chaos.com/hc/en-us/articles/4406882847505-OptiX-and-NVLink-FAQ
+- https://forums.developer.nvidia.com/t/two-dual-geforce-rtx-3090s-and-nvlink-ubuntu-support-at-least-blender-has-support-for-nvlink/160561/13
+- https://www.pugetsystems.com/support/guides/how-to-enable-and-test-nvidia-nvlink-on-quadro-and-geforce-rtx-cards-in-windows-10-1266/
+- https://www.pugetsystems.com/labs/articles/nvidia-nvlink-2021-update-and-compatibility-chart-2074/
+- https://forums.developer.nvidia.com/t/two-rtx-a6000-nvlink-link-is-supported-false/177285
+
+-----
+
+```
+# current GPU configuration
+nvidia-smi topo -m
+
+# NVLink capabilities
+nvidia-smi nvlink -c
+
+# NVLink status
+nvidia-smi nvlink -s
+
+# might need to turn on Persistent Mode ?
+# nvidia-smi -pm 1
+```
