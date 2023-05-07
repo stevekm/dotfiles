@@ -194,6 +194,13 @@ GRUB_CMDLINE_LINUX=""
 # UUID=ebbb4fad-6329-4914-b800-e3ed22b36574 /mnt/P4600               ext4    defaults 0       0
 # mount all volumes
 # $ sudo mount -a
-
+#
+# $ sudo mkfs.ext4 -L MX500 /dev/sda2
+# $ lsblk -f
+# $ sudo mkdir /mnt/MX500
+# $ sudo mount UUID=bed1b9e9-2f5e-4289-bcf0-44566fa9b626 /mnt/MX500
+# $ sudo mkdir /mnt/MX500/models
+# $ sudo chown steve /mnt/MX500/models
+# $ sudo chgrp steve /mnt/MX500/models
 
 

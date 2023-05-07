@@ -13,7 +13,7 @@
 # (your username) ALL=(ALL) NOPASSWD: /usr/bin/nvidia-persistenced
 # (your username) ALL=(ALL) NOPASSWD: /usr/bin/nvidia-smi
 
-PL=${1:-240}
+PL=${1:-200}
 
 #Enable persistence mode
 sudo nvidia-smi -pm ENABLED
