@@ -154,7 +154,7 @@ GRUB_CMDLINE_LINUX=""
 # https://github.com/NVIDIA/nccl-tests
 # https://docs.nvidia.com/deeplearning/nccl/install-guide/index.html
 sudo apt install libnccl2 libnccl-dev
-
+# nccl-tests/build$ ./reduce_scatter_perf -g 2 -n 20000
 
 
 # Swap file configuration
