@@ -149,7 +149,11 @@ GRUB_CMDLINE_LINUX=""
 # sudo apt-get -y install cuda
 
 # https://stackoverflow.com/questions/43022843/nvidia-nvml-driver-library-version-mismatch
-
+#
+#  for testing NVLink
+# https://github.com/NVIDIA/nccl-tests
+# https://docs.nvidia.com/deeplearning/nccl/install-guide/index.html
+sudo apt install libnccl2 libnccl-dev
 
 
 
