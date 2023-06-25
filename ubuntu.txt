@@ -187,6 +187,9 @@ sudo apt install libnccl2 libnccl-dev
 # $ lsblk -f
 # also
 # $ ls -l /dev/disk/by-uuid/
+# or 
+# sudo fdisk -l
+#
 # format drive
 # $ sudo mkfs ext4 -L P4600 /dev/nvme2n1p1 # wait this one did not work it make an ext2 volume instead
 # $ sudo mkfs.ext4 -L P4600 /dev/nvme2n1p1
