@@ -187,7 +187,7 @@ sudo apt install libnccl2 libnccl-dev
 # $ lsblk -f
 # also
 # $ ls -l /dev/disk/by-uuid/
-# or 
+# or
 # sudo fdisk -l
 #
 # format drive
@@ -209,5 +209,28 @@ sudo apt install libnccl2 libnccl-dev
 # $ sudo mkdir /mnt/MX500/models
 # $ sudo chown steve /mnt/MX500/models
 # $ sudo chgrp steve /mnt/MX500/models
+#
+#
+# if brand new disk does not have any partitions yet;
+# https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux
+# identify new disk;
+# sudo parted -l
+# or
+# lsblk
+
+# apply partition with
+# sudo parted /dev/sdb mklabel gpt
+# sudo parted -a opt /dev/sdb mkpart primary ext4 0% 100%
+# sudo mkfs.ext4 -L S870 /dev/sdb1
+
+# sdb
+# └─sdb1      ext4     1.0   S870  b6c82947-41a3-4cf1-baa1-8fc545463266
+
+# sudo mkdir /mnt/S870
+# sudo chown steve /mnt/S870/
+# sudo mount UUID=b6c82947-41a3-4cf1-baa1-8fc545463266 /mnt/S870
+# add to /etc/fstab
+# UUID=b6c82947-41a3-4cf1-baa1-8fc545463266 /mnt/S870               ext4    defaults 0       0
+
 
 
