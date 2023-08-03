@@ -234,3 +234,14 @@ sudo apt install libnccl2 libnccl-dev
 
 
 
+# Network debug
+# get your external IP address
+# $ curl http://checkip.amazonaws.com
+# $ curl ifconfig.me
+# get IP address for a URL
+# $ nslookup google.com
+# $ dig google.com
+# check that a remote server can be reached
+# $ ping 1.1.1.1
+# check what service is running on a specific local port
+# $ sudo lsof -i :53
