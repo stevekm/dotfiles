@@ -156,6 +156,15 @@ GRUB_CMDLINE_LINUX=""
 sudo apt install libnccl2 libnccl-dev
 # nccl-tests/build$ ./reduce_scatter_perf -g 2 -n 20000
 
+# if you get busted graphics after upgrading the Nvidia drivers, run this
+# https://askubuntu.com/questions/1191638/graphics-and-resolution-problems-nvidia-in-ubuntu-18-04-after-update#1203876
+# $ sudo apt purge nvidia*
+# ## if you reboot here , the computer will use Nouveau driver.
+# ##check the recommended drivers
+# $ ubuntu-drivers device
+# ## that show me 390 as recommended but didn't work , 340 works in my case
+# $ sudo apt install nvidia-driver-545
+
 
 # Swap file configuration
 # https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04
