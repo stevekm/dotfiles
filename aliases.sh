@@ -24,20 +24,24 @@ if ls --version &>/dev/null; then
     alias ls='ls --color=auto'
 fi
 
-# alias ll='ls -lah'
+alias ll='ls -lah'
+
+# NOTE: removed this because it breaks globs
 # there might already be an alias for ll from the global system
 # https://askubuntu.com/questions/372926/bash-syntax-error-near-unexpected-token
 # https://stackoverflow.com/questions/9783507/how-can-i-check-in-my-bashrc-if-an-alias-was-already-set
-unalias ll 2>/dev/null
-ll () {
-  # only GNU has --version flag, needs --color=auto
-  if ls --version &>/dev/null; then
-    ls --color=auto -lah ${1:-}
-  else
-    # it must be BSD version so use -G
-    ls -Glah ${1:-}
-  fi
-}
+# unalias ll 2>/dev/null
+# ll () {
+#   # only GNU has --version flag, needs --color=auto
+#   if ls --version &>/dev/null; then
+#     ls --color=auto -lah ${1:-}
+#   else
+#     # it must be BSD version so use -G
+#     ls -Glah ${1:-}
+#  fi
+# }
+
+
 
 # alias lt='ls -Glahtr'
 lt () {
