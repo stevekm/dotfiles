@@ -25,6 +25,7 @@ openjdk-18-jdk
 hddtemp
 inxi
 jq
+ifconfig
 lm-sensors
 net-tools
 psensor
@@ -37,7 +38,22 @@ flatpak
 apt-transport-https
 flatpak
 # https://flatpak.org/setup/Ubuntu
+# to get stats on NVMe ssd
+nvme-cli 
+# $ sudo nvme smart-log /dev/nvme0
 
+# for dealing with torrents
+deluged deluge-web deluge-console deluge
+
+# for dealing with SMB shares
+samba
+cifs-utils
+smbclient
+
+# for docker and singularity container
+apt-transport-https ca-certificates curl software-properties-common
+docker-ce
+build-essential libseccomp-dev  libglib2.0-dev pkg-config squashfs-tools cryptsetup runc
 
 # upgrade packages commands
 # https://askubuntu.com/questions/196768/how-to-install-updates-via-command-line#196777
@@ -262,3 +278,10 @@ sudo apt install libnccl2 libnccl-dev
 # $ ping 1.1.1.1
 # check what service is running on a specific local port
 # $ sudo lsof -i :53
+
+# mount SMB share
+$ sudo mount -t cifs -o guest,username=guest,vers=3.0 //192.168.1.200/Media /media/share/Media
+# put this in /etc/fstab
+//192.168.1.200/Media /media/share/Media cifs    guest,username=guest,ro     0       0
+# check the SMB access with this
+smbclient -L 192.168.1.200 -U guest
