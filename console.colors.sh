@@ -7,7 +7,7 @@
 # NOTE: default is export PS1='\u@\h \W\\$'
 
 case "${HOSTNAME}" in
-    "quark") # light blue
+    "quark"|*nuc*) # light blue
         export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[94m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
         ;;
     hg*) # gray
