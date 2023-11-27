@@ -285,3 +285,5 @@ $ sudo mount -t cifs -o guest,username=guest,vers=3.0 //192.168.1.200/Media /med
 //192.168.1.200/Media /media/share/Media cifs    guest,username=guest,ro     0       0
 # check the SMB access with this
 smbclient -L 192.168.1.200 -U guest
+# if you need to allow it through the firewall
+sudo ufw allow Samba
