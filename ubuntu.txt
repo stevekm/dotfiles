@@ -52,8 +52,12 @@ smbclient
 
 # for docker and singularity container
 apt-transport-https ca-certificates curl software-properties-common
-docker-ce
+docker-ce docker-compose-plugin
 build-essential libseccomp-dev  libglib2.0-dev pkg-config squashfs-tools cryptsetup runc
+# make sure Docker starts at boot
+# https://docs.docker.com/engine/install/linux-postinstall/#configure-docker-to-start-on-boot-with-systemd
+# sudo systemctl enable docker.service
+# sudo systemctl enable containerd.service
 
 # upgrade packages commands
 # https://askubuntu.com/questions/196768/how-to-install-updates-via-command-line#196777
