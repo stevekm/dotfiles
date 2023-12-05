@@ -79,6 +79,29 @@ sudo apt full-upgrade  # Installs updates; may also remove some packages, if nee
 sudo apt autoremove    # Removes any old packages that are no longer needed
 ```
 
+# Boot Settings
+
+show all messages during boot;
+
+- edit this file `/etc/default/grub`
+  - make sure you make a backup copy of this file before editing it!
+
+- comment out this line; `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"`
+  - replace it with this line `GRUB_CMDLINE_LINUX_DEFAULT=""`
+
+- add this line; `GRUB_CMDLINE_LINUX=""`
+
+- need to update GRUB after editing the file or the changes will not take effect
+  - this safely migrates the changes to the file `/boot/grub/grub.cfg` which you should never touch
+
+```bash
+sudo update-grub
+```
+
+For full documentation of the options in this file, see:
+`info -f grub -n 'Simple configuration'`
+source: https://askubuntu.com/questions/248/how-can-i-show-or-hide-boot-messages-when-ubuntu-starts
+
 # conda
 
 install conda
@@ -252,8 +275,6 @@ NOTE: OLD docs for Singularity installation;
 - https://apptainer.org/admin-docs/master/installation.html
 - https://github.com/apptainer/singularity/releases
 
-
-
 # Storage and Drives
 
 ## Format and mount drives
@@ -352,29 +373,6 @@ to get SMART stats on drive
 # smartmontools
 sudo smartctl --all /dev/sdb
 ```
-
-# Boot Settings
-
-show all messages during boot;
-
-- edit this file `/etc/default/grub`
-  - make sure you make a backup copy of this file before editing it!
-
-- comment out this line; `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"`
-  - replace it with this line `GRUB_CMDLINE_LINUX_DEFAULT=""`
-
-- add this line; `GRUB_CMDLINE_LINUX=""`
-
-- need to update GRUB after editing the file or the changes will not take effect
-  - this safely migrates the changes to the file `/boot/grub/grub.cfg` which you should never touch
-
-```bash
-sudo update-grub
-```
-
-For full documentation of the options in this file, see:
-`info -f grub -n 'Simple configuration'`
-source: https://askubuntu.com/questions/248/how-can-i-show-or-hide-boot-messages-when-ubuntu-starts
 
 
 
