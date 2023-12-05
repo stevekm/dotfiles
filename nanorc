@@ -1,0 +1,2 @@
+# for macOS nano from Homebrew
+include "/usr/local/Cellar/nano/*/share/nano/*.nanorc"
