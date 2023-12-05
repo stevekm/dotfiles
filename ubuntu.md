@@ -261,6 +261,86 @@ to get stats on NVMe ssd
 # nvme-cli
 sudo nvme smart-log /dev/nvme0
 ```
+## Format and mount drives
+
+NOTE: do not just copy/paste/run these commands, all commands need to be customized to the addresses of your drives
+
+resources;
+- https://phoenixnap.com/kb/linux-format-disk
+- https://kwilson.io/blog/format-a-linux-disk-as-ext4-from-the-command-line/
+- https://askubuntu.com/questions/517354/terminal-method-of-formatting-storage-drive
+- https://help.ubuntu.com/community/Fstab
+
+
+if its a brand new disk and does not have any partitions yet, you need to make partitions first
+
+- https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux
+
+identify new disk
+
+```bash
+sudo parted -l
+# or
+lsblk
+```
+
+apply partition
+
+- using GPT partition table
+- making a ext4 partition
+
+```bash
+sudo parted /dev/sdb mklabel gpt
+sudo parted -a opt /dev/sdb mkpart primary ext4 0% 100%
+# sudo mkfs.ext4 -L S870 /dev/sdb1
+```
+
+find drive UUID if you did not already do that
+
+```bash
+lsblk -f
+# also
+ls -l /dev/disk/by-uuid/
+# or
+sudo fdisk -l
+```
+
+format the drive (example, for ext4)
+
+```bash
+sudo mkfs.ext4 -L DriveLabel /dev/nvme2n1p1
+```
+
+- there is a `mkfs.xyz` for all available filesystem formats, you can get more by installing packages for filesystem support
+
+get UUID again
+
+```bash
+lsblk -f
+```
+
+mount the drive
+
+```bash
+# make the mount point if it doesnt already exist;
+# sudo mkdir -p /mnt/DriveLabel
+# sudo chown -R yourusername /mnt/DriveLabel
+# sudo chgrp -R yourusername /mnt/DriveLabel
+sudo mount UUID=ebxyzxyzd-6123-4567-b900-e3eabvcabc4 /mnt/DriveLabel
+```
+
+add to `/etc/fstab`
+
+```bash
+# put a line like this in your fstab
+UUID=ebxyzxyzd-6123-4567-b900-e3eabvcabc4 /mnt/DriveLabel               ext4    defaults 0       0
+```
+
+mount all volumes from `/etc/fstab`
+
+```bash
+sudo mount -a
+```
 
 # Boot Settings
 
@@ -372,10 +452,6 @@ sudo apt install libnccl2 libnccl-dev
 nccl-tests/build$ ./reduce_scatter_perf -g 2 -n 20000
 ```
 
-
-
-
-
 # Swap file configuration
 
 resources;
@@ -407,82 +483,63 @@ entry should look like this
 ```
 
 
+# Network
 
+debugging
 
+get your external IP address
 
-# Format and mount drive
-# https://phoenixnap.com/kb/linux-format-disk
-# https://kwilson.io/blog/format-a-linux-disk-as-ext4-from-the-command-line/
-# https://askubuntu.com/questions/517354/terminal-method-of-formatting-storage-drive
-# https://help.ubuntu.com/community/Fstab
-# find drive UUID
-# $ lsblk -f
-# also
-# $ ls -l /dev/disk/by-uuid/
-# or
-# sudo fdisk -l
-#
-# format drive
-# $ sudo mkfs ext4 -L P4600 /dev/nvme2n1p1 # wait this one did not work it make an ext2 volume instead
-# $ sudo mkfs.ext4 -L P4600 /dev/nvme2n1p1
-# get UUID again
-# $ lsblk -f
-# mount the drive
-# $ sudo mount UUID=ebbb4fad-6329-4914-b800-e3ed22b36574 /mnt/P4600
-# add to /etc/fstab
-# UUID=ebbb4fad-6329-4914-b800-e3ed22b36574 /mnt/P4600               ext4    defaults 0       0
-# mount all volumes
-# $ sudo mount -a
-#
-# $ sudo mkfs.ext4 -L MX500 /dev/sda2
-# $ lsblk -f
-# $ sudo mkdir /mnt/MX500
-# $ sudo mount UUID=bed1b9e9-2f5e-4289-bcf0-44566fa9b626 /mnt/MX500
-# $ sudo mkdir /mnt/MX500/models
-# $ sudo chown steve /mnt/MX500/models
-# $ sudo chgrp steve /mnt/MX500/models
-#
-#
-# if brand new disk does not have any partitions yet;
-# https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux
-# identify new disk;
-# sudo parted -l
-# or
-# lsblk
+```bash
+curl http://checkip.amazonaws.com
+curl ifconfig.me
+```
+get IP address for a URL
 
-# apply partition with
-# sudo parted /dev/sdb mklabel gpt
-# sudo parted -a opt /dev/sdb mkpart primary ext4 0% 100%
-# sudo mkfs.ext4 -L S870 /dev/sdb1
+```bash
+nslookup google.com
+dig google.com
+```
 
-# sdb
-# └─sdb1      ext4     1.0   S870  b6c82947-41a3-4cf1-baa1-8fc545463266
+check that a remote server can be reached
 
-# sudo mkdir /mnt/S870
-# sudo chown steve /mnt/S870/
-# sudo mount UUID=b6c82947-41a3-4cf1-baa1-8fc545463266 /mnt/S870
-# add to /etc/fstab
-# UUID=b6c82947-41a3-4cf1-baa1-8fc545463266 /mnt/S870               ext4    defaults 0       0
+```bash
+ping 1.1.1.1
+```
 
+check what service is running on a specific local port
 
+```bash
+sudo lsof -i :53
+```
 
-# Network debug
-# get your external IP address
-# $ curl http://checkip.amazonaws.com
-# $ curl ifconfig.me
-# get IP address for a URL
-# $ nslookup google.com
-# $ dig google.com
-# check that a remote server can be reached
-# $ ping 1.1.1.1
-# check what service is running on a specific local port
-# $ sudo lsof -i :53
+## Network Shares
 
-# mount SMB share
-$ sudo mount -t cifs -o guest,username=guest,vers=3.0 //192.168.1.200/Media /media/share/Media
-# put this in /etc/fstab
-//192.168.1.200/Media /media/share/Media cifs    guest,username=guest,ro     0       0
-# check the SMB access with this
+mount SMB share interactively
+
+```bash
+sudo mount -t cifs -o guest,username=guest,vers=3.0 //192.168.1.2/Data /media/share/Data
+```
+
+- might need to create and take ownership of mount point first
+
+make SMB mount permamant at boot; put this in `/etc/fstab`
+
+```bash
+//192.168.1.2/Data /media/share/Data cifs    guest,username=guest,ro     0       0
+```
+
+- using "guest" access, read only filesystem
+
+check the SMB shares availble on a host
+
+```bash
+# requires apt install smbclient
 smbclient -L 192.168.1.200 -U guest
-# if you need to allow it through the firewall
+```
+
+allow SMB shares through the firewall
+```bash
+# requires apt install samba
 sudo ufw allow Samba
+```
+
