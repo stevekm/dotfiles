@@ -297,58 +297,115 @@ There are multiple ways to install Nvidia drivers, such as this one;
 
 however ^^^ this one never seems to work right so I usually do not use it
 
-# CUDA installation
-# https://docs.nvidia.com/cuda/cuda-installation-guide-linux/
-# https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=deb_network
-# more issues here; https://askubuntu.com/questions/1436506/how-to-resolve-unmet-dependencies-error-when-upgrading-depends-nvidia-kernel-c
-#
-# first install the nvidia driver;
-# sudo apt install nvidia-driver-515
-#
-# then do the local CUDA install method
-# wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin
-# sudo mv cuda-ubuntu2204.pin /etc/apt/preferences.d/cuda-repository-pin-600
-# wget https://developer.download.nvidia.com/compute/cuda/12.1.0/local_installers/cuda-repo-ubuntu2204-12-1-local_12.1.0-530.30.02-1_amd64.deb
-# sudo dpkg -i cuda-repo-ubuntu2204-12-1-local_12.1.0-530.30.02-1_amd64.deb
-# sudo cp /var/cuda-repo-ubuntu2204-12-1-local/cuda-*-keyring.gpg /usr/share/keyrings/
-# sudo apt-get update
-# sudo apt-get -y install cuda
 
-# https://stackoverflow.com/questions/43022843/nvidia-nvml-driver-library-version-mismatch
-#
-#  for testing NVLink
-# https://github.com/NVIDIA/nccl-tests
-# https://docs.nvidia.com/deeplearning/nccl/install-guide/index.html
+## Find recommended drivers
+
+Use this command to find the drivers you should download
+
+```bash
+ubuntu-drivers device
+```
+
+install one of the listed drivers
+
+```bash
+# chose 545 here because it was listed from the above step
+sudo apt install nvidia-driver-545
+```
+
+if you broke your drivers after doing some `apt upgrade` then try this to remove your busted drivers and repeat the above steps to install recommended ones again
+
+- [source](https://askubuntu.com/questions/1191638/graphics-and-resolution-problems-nvidia-in-ubuntu-18-04-after-update#1203876)
+
+- if you reboot at this step, the computer will use Nouveau driver
+
+```bash
+sudo apt purge nvidia*
+```
+
+## CUDA installation
+
+installing CUDA can be very easy or nighmarishly frustrating
+
+there are several install methods, I cannot remember which one works...
+
+resources;
+- https://docs.nvidia.com/cuda/cuda-installation-guide-linux/
+- https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=deb_network
+- more issues here; https://askubuntu.com/questions/1436506/how-to-resolve-unmet-dependencies-error-when-upgrading-depends-nvidia-kernel-c
+
+first install the nvidia driver;
+
+```bash
+# pick the driver from the above step
+sudo apt install nvidia-driver-515
+```
+
+then do the local CUDA install method
+
+NOTE: warning, I dont know if this is outdated
+
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin
+sudo mv cuda-ubuntu2204.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/12.1.0/local_installers/cuda-repo-ubuntu2204-12-1-local_12.1.0-530.30.02-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2204-12-1-local_12.1.0-530.30.02-1_amd64.deb
+sudo cp /var/cuda-repo-ubuntu2204-12-1-local/cuda-*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get -y install cuda
+```
+
+### NVLink
+
+testing that NVLink works
+
+resources
+- https://docs.nvidia.com/deeplearning/nccl/install-guide/index.html
+- https://github.com/NVIDIA/nccl-tests
+- https://stackoverflow.com/questions/43022843/nvidia-nvml-driver-library-version-mismatch
+
+```bash
+# make sure you have these installed
 sudo apt install libnccl2 libnccl-dev
-# nccl-tests/build$ ./reduce_scatter_perf -g 2 -n 20000
 
-# if you get busted graphics after upgrading the Nvidia drivers, run this
-# https://askubuntu.com/questions/1191638/graphics-and-resolution-problems-nvidia-in-ubuntu-18-04-after-update#1203876
-# $ sudo apt purge nvidia*
-# ## if you reboot here , the computer will use Nouveau driver.
-# ##check the recommended drivers
-# $ ubuntu-drivers device
-# ## that show me 390 as recommended but didn't work , 340 works in my case
-# $ sudo apt install nvidia-driver-545
+# from that nccl-tests repo run this to see if NVLink is working
+nccl-tests/build$ ./reduce_scatter_perf -g 2 -n 20000
+```
+
+
+
 
 
 # Swap file configuration
-# https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04
-# https://askubuntu.com/questions/927854/how-do-i-increase-the-size-of-swapfile-without-removing-it-in-the-terminal
-# https://help.ubuntu.com/community/SwapFaq
-# check existing swap and memory usages
-# $ sudo swapon --show
-# $ free -h
-# $ df -h
+
+resources;
+- https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04
+- https://askubuntu.com/questions/927854/how-do-i-increase-the-size-of-swapfile-without-removing-it-in-the-terminal
+- https://help.ubuntu.com/community/SwapFaq
+
+check existing swap and memory usages
+
+```bash
+sudo swapon --show
+free -h
+df -h
+
 # create 100GB swap file
-# $ sudo fallocate -l 100G /swapfile
-# $ sudo chmod 600 /swapfile
-# $ sudo mkswap /swapfile
-# $ sudo swapon /swapfile
-# can be done with multiple files for swap
-# add to /etc/fstab to make permanent
-# entry should look like this
-# '/swapfile none swap sw 0 0'
+sudo fallocate -l 100G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+```
+
+can be done with multiple files for swap
+
+add to /etc/fstab to make permanent
+entry should look like this
+
+```
+/swapfile none swap sw 0 0
+```
+
 
 
 
