@@ -25,7 +25,9 @@ openjdk-18-jdk
 ```
 
 install Go (Golang)
+
 - download the tarball from here [https://go.dev/dl/](https://go.dev/dl/)
+
 ```bash
 sudo tar -C /usr/local -xvf go1.16.7.linux-amd64.tar.gz
 sudo nano ~/.profile
@@ -93,7 +95,7 @@ Docker, Singularity
 
 ## Docker Installation
 
-(source)[https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04]
+[source](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)
 
 (copy / pasted verbatim from that link)
 
@@ -169,7 +171,7 @@ test that it works;
 docker run --rm -ti ubuntu:latest
 ```
 
-make sure Docker starts at boot (source)[https://docs.docker.com/engine/install/linux-postinstall/#configure-docker-to-start-on-boot-with-systemd]
+make sure Docker starts at boot [source](https://docs.docker.com/engine/install/linux-postinstall/#configure-docker-to-start-on-boot-with-systemd)
 
 ```bash
 sudo systemctl enable docker.service
