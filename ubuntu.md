@@ -70,7 +70,7 @@ build-essential libseccomp-dev  libglib2.0-dev pkg-config squashfs-tools cryptse
 
 # Packages
 
-upgrade packages commands (source)[https://askubuntu.com/questions/196768/how-to-install-updates-via-command-line#196777]
+upgrade packages commands [source](https://askubuntu.com/questions/196768/how-to-install-updates-via-command-line#196777)
 
 ```bash
 sudo apt update        # Fetches the list of available updates
