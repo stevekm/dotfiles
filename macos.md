@@ -27,6 +27,8 @@ nano
 make
 ```
 
+- use the included `nanorc` file to get Brew `nano` syntax highlighting to work, copy the file to `~/.nanorc`
+
 ## Misc
 
 check SMART data on the internal SSD
