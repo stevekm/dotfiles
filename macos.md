@@ -1,5 +1,17 @@
 # macOS notes
 
+## Homebrew
+
+- [https://brew.sh/](https://brew.sh/)
+
+install homebrew
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+new packages to install, and old outdated ones to replace
+
 ```bash
 # package to install with brew install
 wget
@@ -14,6 +26,8 @@ smartmontools
 nano
 make
 ```
+
+## Misc
 
 check SMART data on the internal SSD
 
