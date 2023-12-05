@@ -256,11 +256,6 @@ NOTE: OLD docs for Singularity installation;
 
 # Storage and Drives
 
-to get stats on NVMe ssd
-```bash
-# nvme-cli
-sudo nvme smart-log /dev/nvme0
-```
 ## Format and mount drives
 
 NOTE: do not just copy/paste/run these commands, all commands need to be customized to the addresses of your drives
@@ -340,6 +335,22 @@ mount all volumes from `/etc/fstab`
 
 ```bash
 sudo mount -a
+```
+
+## Drive Stats
+
+to get stats on NVMe ssd
+
+```bash
+# nvme-cli
+sudo nvme smart-log /dev/nvme0
+```
+
+to get SMART stats on drive
+
+```bash
+# smartmontools
+sudo smartctl --all /dev/sdb
 ```
 
 # Boot Settings
