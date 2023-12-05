@@ -53,6 +53,8 @@ flatpak # https://flatpak.org/setup/Ubuntu
 
 nvme-cli # to get stats on NVMe ssd
 
+smartmontools # to get SMART data on drives
+
 deluged deluge-web deluge-console deluge # torrents
 
 samba cifs-utils smbclient # SMB shares
