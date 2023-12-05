@@ -14,3 +14,9 @@ smartmontools
 nano
 make
 ```
+
+check SMART data on the internal SSD
+
+```bash
+sudo smartctl --all /dev/disk0
+```
