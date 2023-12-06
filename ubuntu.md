@@ -521,6 +521,13 @@ check what service is running on a specific local port
 sudo lsof -i :53
 ```
 
+check that a server is accessible on a port
+
+```bash
+# netcat
+nc -vz 192.168.1.123 6789
+```
+
 ## Network Shares
 
 mount SMB share interactively
