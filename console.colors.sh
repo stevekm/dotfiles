@@ -10,7 +10,7 @@ case "${HOSTNAME}" in
     "quark"|*nuc*) # light blue
         export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[94m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
         ;;
-    hg*) # gray
+    hg*|fe*) # gray
         export PS1="\[\033[96m\]\u\[\033[m\]@\[\033[90m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
         ;;
     silo|juno|terra|j*|dmp2cmo01) # green for known remote servers
