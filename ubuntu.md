@@ -528,6 +528,12 @@ check that a server is accessible on a port
 nc -vz 192.168.1.123 6789
 ```
 
+scan all ports on a server
+
+```bash
+sudo nmap -n -PN -sT -sU -p- <IP address>
+```
+
 ## Network Shares
 
 mount SMB share interactively

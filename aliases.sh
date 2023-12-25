@@ -11,6 +11,7 @@ alias grep='grep --color=auto'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
+alias dc='docker compose'
 
 # NOTE: macOS BSD ls and GNU ls have different color args
 # https://www.cyberciti.biz/faq/how-to-turn-on-or-off-colors-in-bash/
