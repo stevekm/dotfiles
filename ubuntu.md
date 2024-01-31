@@ -118,6 +118,8 @@ Docker, Singularity
 
 ## Docker Installation
 
+- Debian: https://docs.docker.com/engine/install/debian/
+
 [source](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)
 
 (copy / pasted verbatim from that link)
