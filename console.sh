@@ -1,5 +1,10 @@
+# NOTE: dont use this file with zsh on macOS, use the console.zsh file instead
+
 # enable console text colors
 export CLICOLOR=1
+
+# NOTE: CLICOLOR enables colored output for ls only for BSD ls, not for GNU ls
+# https://unix.stackexchange.com/questions/2897/clicolor-and-ls-colors-in-bash
 
 ##############################################################################
 # Timestamp bash Prompt

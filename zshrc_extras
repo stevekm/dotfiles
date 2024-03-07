@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # user settings for zsh
 THIS_DIR="$(dirname "${(%):-%x}")"
 

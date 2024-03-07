@@ -19,6 +19,8 @@ alias dc='docker compose'
 # GNU: ls --color=auto
 # NOTE: sometimes on macOS, using conda will install GNU ls ....
 # https://stackoverflow.com/questions/1676426/how-to-check-the-ls-version
+# NOTE: CLICOLOR env var enables colored output for ls only for BSD ls, not for GNU ls
+# https://unix.stackexchange.com/questions/2897/clicolor-and-ls-colors-in-bash
 
 # make sure output is colorized; macOS doesnt support this option it seems
 if ls --version &>/dev/null; then

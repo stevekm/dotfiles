@@ -1,6 +1,8 @@
 # zsh console customizations
 # default: /etc/zshrc
 export CLICOLOR=1
+# NOTE: CLICOLOR enables colored output for ls only for BSD ls, not for GNU ls
+# https://unix.stackexchange.com/questions/2897/clicolor-and-ls-colors-in-bash
 
 # history
 HISTSIZE=2000000
