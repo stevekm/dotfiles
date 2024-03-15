@@ -94,6 +94,7 @@ alias lt='ls -Glahtr'
 
 
 # pull in these other useful shell functions that I have accumulated over the years
+source "${THIS_DIR}/flush-dns-cache.sh"
 source "${THIS_DIR}/t.sh"
 source "${THIS_DIR}/catcsv.sh"
 source "${THIS_DIR}/nheadt.sh"
