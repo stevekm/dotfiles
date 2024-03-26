@@ -5,8 +5,12 @@ export CLICOLOR=1
 # https://unix.stackexchange.com/questions/2897/clicolor-and-ls-colors-in-bash
 
 # history
-HISTSIZE=2000000
-SAVEHIST=1000000
+# https://superuser.com/questions/1517138/increase-the-size-of-history-for-zsh
+# https://wiki.zshell.dev/docs/guides/customization#history-optimization
+export HISTSIZE=1000000000
+export SAVEHIST=1000000000
+
+# TODO: history backups https://stackoverflow.com/questions/30249853/save-zsh-history-to-persistent-history
 
 
 # prompt
