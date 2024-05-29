@@ -42,3 +42,13 @@ also use this to define and configure new and existing ones
 ```bash
 sharing -l
 ```
+
+check the RAID status
+
+```bash
+diskutil appleRAID list
+
+# or
+
+diskutil listraid
+```
