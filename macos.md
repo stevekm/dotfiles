@@ -25,9 +25,13 @@ pigz
 smartmontools
 nano
 make
+micro
 ```
 
 - use the included `nanorc` file to get Brew `nano` syntax highlighting to work, copy the file to `~/.nanorc`
+
+- see the docs on `micro` settings here https://github.com/zyedidia/micro/blob/master/runtime/help/options.md
+  - the file `config_micro_settings.json` should be copied to `~/.config/micro/settings.json`
 
 ## Misc
 
