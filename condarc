@@ -1,0 +1,9 @@
+channels:
+ - conda-forge
+ - bioconda
+ - https://conda.anaconda.org/anaconda/osx-64
+ - https://conda.anaconda.org/anaconda/noarch
+ - https://conda.anaconda.org/r/osx-64
+ - https://conda.anaconda.org/r/noarch
+channel_priority: strict
+#ssl_verify: false
