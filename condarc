@@ -1,3 +1,6 @@
+# save this file to ~/.condarc
+# this will modify the channel priority for your user account
+# so that conda-forge and bioconda are preferred since they have no Licensing requirements
 channels:
  - conda-forge
  - bioconda
