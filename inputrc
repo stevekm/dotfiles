@@ -9,3 +9,7 @@
 "\e[5D": backward-word
 "\e\e[C": forward-word
 "\e\e[D": backward-word
+
+
+# NOTE: zsh does not use .inputrc file, it uses .zshrc instead
+# see the settings already in use for the zsh_extras file

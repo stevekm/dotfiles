@@ -7,7 +7,14 @@ source "${THIS_DIR}/aliases.sh"
 source "${THIS_DIR}/aliases.git.sh"
 source "${THIS_DIR}/console.zsh"
 
-# Search history with up / down arrow keys
+# extra custom key bindings
 # https://unix.stackexchange.com/questions/16101/zsh-search-history-on-up-and-down-keys
+# https://wiki.archlinux.org/title/Zsh#Key_bindings
+
+# Search history with up / down arrow keys
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
+
+# Bind Option + Left/Right to move by word in zsh
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
