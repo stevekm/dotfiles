@@ -40,7 +40,7 @@ cp inputrc ~/.inputrc
 
 (also requires a terminal restart to take effect)
 
-With this, you will be able to e.g. type `s` into your shell then press Up/Down Arrow keys to scroll through all commands in your shell history that start with "s" (such as that long ssh command you used last month which you cant remember now). 
+With this, you will be able to e.g. type `s` into your shell then press Up/Down Arrow keys to scroll through all commands in your shell history that start with "s" (such as that long ssh command you used last month which you cant remember now).
 
 ## Git
 
@@ -59,7 +59,7 @@ These days I typically install `conda` on most systems I will be using because i
 
 The Miniconda latest docs and download is here; https://docs.conda.io/en/latest/miniconda.html
 
-The Miniconda installer archive is here; https://repo.anaconda.com/miniconda/ 
+The Miniconda installer archive is here; https://repo.anaconda.com/miniconda/
 
 Pick the version appropriate for your system. I usually download the `.sh` installer, and then install it with;
 
@@ -73,7 +73,7 @@ NOTE that running `conda init` will update your `.bashrc` and/or `.zshrc`, and p
 
 ## More
 
-### Ubuntu 
+### Ubuntu
 
 Notes specific to setting up a personal Ubuntu instance are in `ubuntu.txt`
 
@@ -109,7 +109,7 @@ brew tap homebrew/science
 brew install coreutils
 
 # helpful tools
-brew install wget 
+brew install wget
 brew install awscli
 brew install btop
 brew install tree
@@ -127,7 +127,7 @@ brew install p7zip
 # the versions of some basic tools included in macOS are ancient so you might want newer versions with extra better features
 brew install rsync
 brew install make  # GNU "make" has been installed as "gmake"
-brew install bash 
+brew install bash
 ```
 
 #### Apps
@@ -176,3 +176,4 @@ brew cask install xquartz
 
 ##### [MacTeX](http://www.tug.org/mactex/)
 - LaTeX PDF typesetting program installation for OS X
+
